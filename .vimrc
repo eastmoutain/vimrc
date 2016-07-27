@@ -28,6 +28,7 @@
 "    -> Colors and Fonts
 "    -> Files and backups
 "    -> Text, tab and indent related
+"    -> Ctags Cscope
 "    -> Visual mode related
 "    -> Moving around, tabs and buffers
 "    -> Status line
@@ -171,6 +172,43 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+
+""""""""""""""""""""""""""""""
+" => Ctags and Cscope
+"""""""""""""""""""""""""""""
+set tags=tags;
+set autochdir
+
+if has("cscope")
+    set cscopetag " support Ctrl+] and Ctrl+t 
+    set csto=1
+
+    if filereadable("cscope.out")
+        cs add cscope.out
+    elseif $CSCOPE_DB !=""
+        cs add $CSCOPE_DB
+    endif
+
+    set cscopeverbose
+
+    nmap <C-/>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-/>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-/>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-/>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-/>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-/>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-/>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-/>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+endif
+
+" taglist configuration
+"noremap <silent><F8>:TlistToggle<CR><CR>
+noremap <F8> :TlistToggle<CR><CR>
+let Tlist_Ctags_Cmd="/usr/bin/ctags"
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Use_Right_Window=0
+let Tlist_File_Fold_Auto_Close=1
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
