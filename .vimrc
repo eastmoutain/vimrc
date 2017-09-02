@@ -62,6 +62,7 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
+set mouse=a
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -174,6 +175,11 @@ set wrap "Wrap lines
 
 
 """"""""""""""""""""""""""""""
+" pathogen
+""""""""""""""""""""""""""""""
+execute pathogen#infect()
+
+""""""""""""""""""""""""""""""
 " => Ctags and Cscope
 """""""""""""""""""""""""""""
 set tags=tags;
@@ -191,15 +197,29 @@ if has("cscope")
 
     set cscopeverbose
 
-    nmap <C-/>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-/>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-/>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-/>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-/>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-/>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-/>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-/>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+    " find this C symbal
+    nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    " find this definition
+    nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    " find functions calling this function
+    nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    " find assignments to 
+    nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    " find this egrep pattern
+    nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    " find this file
+    nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    " find files #including this file
+    nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    " find functions called by this function
+    nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+    set notimeout
+    set timeoutlen=4000
+    set ttimeout
+    set ttimeoutlen=100
 endif
+
 
 " taglist configuration
 "noremap <silent><F8>:TlistToggle<CR><CR>
@@ -210,6 +230,13 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window=0
 let Tlist_File_Fold_Auto_Close=1
 
+
+""""""""""""""""""""""""""""""""
+" NERDTree
+"""""""""""""""""""""""""""""""
+noremap <F9> :NERDTreeToggle<CR><CR>
+let g:NERDTreeWinPos = "right"
+let g:NERDTreeMouseMode=3
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
