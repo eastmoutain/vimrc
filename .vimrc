@@ -198,21 +198,21 @@ if has("cscope")
     set cscopeverbose
 
     " find this C symbal
-    nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
     " find this definition
-    nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
     " find functions calling this function
-    nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
     " find assignments to 
-    nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
     " find this egrep pattern
-    nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
     " find this file
-    nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nnoremap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
     " find files #including this file
-    nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nnoremap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     " find functions called by this function
-    nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
     set notimeout
     set timeoutlen=4000
