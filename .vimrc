@@ -196,23 +196,24 @@ if has("cscope")
     endif
 
     set cscopeverbose
+    set cscoperelative " can use realative path
 
     " find this C symbal
-    nnoremap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
     " find this definition
-    nnoremap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
     " find functions calling this function
-    nnoremap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
     " find assignments to 
-    nnoremap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
     " find this egrep pattern
-    nnoremap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
     " find this file
-    nnoremap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
     " find files #including this file
-    nnoremap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     " find functions called by this function
-    nnoremap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
     set notimeout
     set timeoutlen=4000
