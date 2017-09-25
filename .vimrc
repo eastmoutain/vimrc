@@ -58,8 +58,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+Plugin 'justinmk/vim-syntax-extra'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 
