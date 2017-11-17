@@ -305,6 +305,14 @@ let Tlist_File_Fold_Auto_Close=1
 noremap <C-@>n :NERDTreeToggle<CR><CR>
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeMouseMode=3
+
+""""""""""""""""""""""""""""""
+" indent highlight
+""""""""""""""""""""""""""""""
+let g:indent_guides_enable_on_vim_startup = 1
+
+noremap <C-@>i :IndentGuidesToggle<CR><CR>
+
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
