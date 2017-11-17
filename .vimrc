@@ -66,6 +66,7 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-pathogen'
+Plugin 'int3/vim-taglist-plus'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -290,7 +291,7 @@ endif
 
 " taglist configuration
 "noremap <silent><F8>:TlistToggle<CR><CR>
-noremap <F8> :TlistToggle<CR><CR>
+noremap <C-@>m :TlistToggle<CR><CR>
 let Tlist_Ctags_Cmd="/usr/bin/ctags"
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
@@ -301,7 +302,7 @@ let Tlist_File_Fold_Auto_Close=1
 """"""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""
-noremap <F9> :NERDTreeToggle<CR><CR>
+noremap <C-@>n :NERDTreeToggle<CR><CR>
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeMouseMode=3
 """"""""""""""""""""""""""""""
