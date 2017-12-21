@@ -71,6 +71,8 @@ Plugin 'int3/vim-taglist-plus'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+" Strip off white space
+Plugin 'ntpeters/vim-better-whitespace'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
