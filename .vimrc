@@ -312,6 +312,11 @@ let g:NERDTreeWinPos = "right"
 let g:NERDTreeMouseMode=3
 
 """"""""""""""""""""""""""""""
+" YouCompleteMe config file
+""""""""""""""""""""""""""""""
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+""""""""""""""""""""""""""""""
 " indent highlight
 """"""""""""""""""""""""""""""
 let g:indent_guides_enable_on_vim_startup = 1
