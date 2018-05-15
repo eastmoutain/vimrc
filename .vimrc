@@ -1,12 +1,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" Maintainer:
 "       Amir Salihefendic
 "       http://amix.dk - amix@amix.dk
 "
-" Version: 
+" Version:
 "       5.0 - 29/05/12 15:43:36
 "
-" Blog_post: 
+" Blog_post:
 "       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
 "
 " Awesome_version:
@@ -19,11 +19,11 @@
 " Syntax_highlighted:
 "       http://amix.dk/vim/vimrc.html
 "
-" Raw_version: 
+" Raw_version:
 "       http://amix.dk/vim/vimrc.txt
 "
 " Sections:
-"    -> Instatll Vundle
+"    -> Instatll Vim plug-in
 "    -> General
 "    -> VIM user interface
 "    -> Colors and Fonts
@@ -43,67 +43,31 @@
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Install Vundle
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Install vim plug-in
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin()
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+Plug 'ludovicchabant/vim-gutentags'
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'justinmk/vim-syntax-extra'
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-glaive'
-Plugin 'google/vim-maktaba'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tpope/vim-pathogen'
-Plugin 'int3/vim-taglist-plus'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+Plug 'justinmk/vim-syntax-extra'
+
+" Asynchronous Lint Engine
+Plug 'w0rp/ale'
+
+Plug 'int3/vim-taglist-plus'
+
+Plug 'scrooloose/nerdtree'
+
+Plug 'Valloric/YouCompleteMe'
+
 " Strip off white space
-Plugin 'ntpeters/vim-better-whitespace'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+Plug 'ntpeters/vim-better-whitespace'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 
-call glaive#Install()
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
-
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call plug#end()
 
 
 
@@ -160,7 +124,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
@@ -241,20 +205,37 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-
 """"""""""""""""""""""""""""""
-" pathogen
-""""""""""""""""""""""""""""""
-execute pathogen#infect()
-
-""""""""""""""""""""""""""""""
-" => Ctags and Cscope
+" => Ctags
 """""""""""""""""""""""""""""
-set tags=tags;
+set tags=./.tags;,.tags
 set autochdir
 
+" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" 检测 ~/.cache/tags 不存在就新建
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+
+""""""""""""""""""""""""""""""
+" => Cscope
+"""""""""""""""""""""""""""""
 if has("cscope")
-    set cscopetag " support Ctrl+] and Ctrl+t 
+    set cscopetag " support Ctrl+] and Ctrl+t
     set csto=1
 
     if filereadable("cscope.out")
@@ -272,7 +253,7 @@ if has("cscope")
     nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
     " find functions calling this function
     nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-    " find assignments to 
+    " find assignments to
     nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
     " find this egrep pattern
     nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
@@ -289,12 +270,13 @@ if has("cscope")
     set ttimeoutlen=100
 endif
 
-
+""""""""""""""""""""""""""""""""""""""
 " taglist configuration
+""""""""""""""""""""""""""""""""""""""
 noremap <C-@>m :TlistToggle<CR><CR>
 let Tlist_Auto_Highlight_Tag=1
 let Tlist_Auto_Open=1
-let Tlist_Ctags_Cmd="/usr/bin/ctags"
+let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
 let Tlist_Display_Tag_Scope=1
 let Tlist_Enable_Fold_Colum=1
 let Tlist_Show_Menu=1
@@ -302,6 +284,33 @@ let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window=0
 let Tlist_File_Fold_Auto_Close=0
+
+
+"""""""""""""""""""""""""""""""""""
+" ALE configuartion
+"""""""""""""""""""""""""""""""""""
+let g:ale_linters_explicit = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
+
+
+let g:ale_sign_error = "\ue009\ue009"
+hi! clear SpellBad
+hi! clear SpellCap
+hi! clear SpellRare
+hi! SpellBad gui=undercurl guisp=red
+hi! SpellCap gui=undercurl guisp=blue
+hi! SpellRare gui=undercurl guisp=magenta
 
 
 """"""""""""""""""""""""""""""""
@@ -314,7 +323,22 @@ let g:NERDTreeMouseMode=3
 """"""""""""""""""""""""""""""
 " YouCompleteMe config file
 """"""""""""""""""""""""""""""
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_server_log_level = 'info'
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_complete_in_strings=1
+let g:ycm_key_invoke_completion = '<c-z>'
+set completeopt=menu,menuone
+
+noremap <c-z> <NOP>
+
+let g:ycm_semantic_triggers =  {
+           \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+           \ 'cs,lua,javascript': ['re!\w{2}'],
+           \ }
 
 """"""""""""""""""""""""""""""
 " indent highlight
@@ -385,7 +409,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
