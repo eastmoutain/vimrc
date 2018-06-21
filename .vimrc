@@ -66,6 +66,7 @@ Plug 'Valloric/YouCompleteMe'
 " Strip off white space
 Plug 'ntpeters/vim-better-whitespace'
 
+Plug 'kien/ctrlp.vim'
 
 call plug#end()
 
@@ -339,6 +340,13 @@ let g:ycm_semantic_triggers =  {
            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
            \ 'cs,lua,javascript': ['re!\w{2}'],
            \ }
+
+""""""""""""""""""""""""""""""
+" ctrlp
+""""""""""""""""""""""""""""""
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 
 """"""""""""""""""""""""""""""
 " indent highlight
