@@ -208,6 +208,9 @@ set wrap "Wrap lines
 
 """"""""""""""""""""""""""""""
 " => Ctags
+" Download Ctags from:
+" https://github.com/universal-ctags/ctags
+" and build, install it.
 """""""""""""""""""""""""""""
 set tags=./.tags;,.tags
 set autochdir
