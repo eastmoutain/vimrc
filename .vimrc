@@ -68,6 +68,8 @@ Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'kien/ctrlp.vim'
 
+Plug 'fholgado/minibufexpl.vim'
+
 call plug#end()
 
 
@@ -208,9 +210,9 @@ set wrap "Wrap lines
 
 """"""""""""""""""""""""""""""
 " => Ctags
-" Download Ctags from:
+" Install universal-ctags from
 " https://github.com/universal-ctags/ctags
-" and build, install it.
+" and install it, refer to docs/autotools.rst
 """""""""""""""""""""""""""""
 set tags=./.tags;,.tags
 set autochdir
@@ -242,8 +244,8 @@ if has("cscope")
     set cscopetag " support Ctrl+] and Ctrl+t
     set csto=1
 
-    if filereadable("cscope.out")
-        cs add cscope.out
+    if filereadable(".cscope.out")
+        cs add .cscope.out
     elseif $CSCOPE_DB !=""
         cs add $CSCOPE_DB
     endif
@@ -344,9 +346,9 @@ let g:ycm_semantic_triggers =  {
            \ 'cs,lua,javascript': ['re!\w{2}'],
            \ }
 
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
 " ctrlp
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -365,21 +367,6 @@ noremap <C-@>i :IndentGuidesToggle<CR><CR>
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" clang-format
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup autoformat_settings
-    autocmd FileType bzl AutoFormatBuffer buildifier
-    autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-    autocmd FileType dart AutoFormatBuffer dartfmt
-    autocmd FileType go AutoFormatBuffer gofmt
-    autocmd FileType gn AutoFormatBuffer gn
-    autocmd FileType html,css,json AutoFormatBuffer js-beautify
-    autocmd FileType java AutoFormatBuffer google-java-format
-    autocmd FileType python AutoFormatBuffer yapf
-                      " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -402,13 +389,17 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>
+map <leader>bn :bnext<cr>
+map <leader>bp :bprevious<cr>
+map <leader>bc :Bclose<cr>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
+map <leader>tn :tabNext<cr>
+map <leader>tp :tabprevious<cr>
+map <leader>ti :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
