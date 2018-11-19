@@ -239,6 +239,7 @@ endif
 
 """"""""""""""""""""""""""""""
 " => Cscope
+" alias tags='ctags -R -f .tags && cscope -Rbkq -f .cscope.out && touch .ctrlp'
 """""""""""""""""""""""""""""
 if has("cscope")
     set cscopetag " support Ctrl+] and Ctrl+t
