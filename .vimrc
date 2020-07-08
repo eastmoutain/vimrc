@@ -72,9 +72,14 @@ Plug 'fholgado/minibufexpl.vim'
 
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
+Plug 'https://github.com/fatih/vim-go'
+
 call plug#end()
 
-
+" if golang is installed, pls use the following cmd to install
+" the necessary binaries
+" git clone https://github.com/golang/tools.git your/gopath/src/golang.org/x/tools
+"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -326,6 +331,10 @@ map <F12>b :DoxBlock<cr>
 " Commet one line, insert at the end of the line
 map <F12>e A /**<  */<Left><Left>
 map <F12>u O/**<cr>/<Esc>O
+
+"""""""""""""""""""""""""""""""""""
+" vim-go settings
+"""""""""""""""""""""""""""""""""""
 
 
 """""""""""""""""""""""""""""""""""
