@@ -54,9 +54,6 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'justinmk/vim-syntax-extra'
 
-" Asynchronous Lint Engine
-Plug 'w0rp/ale'
-
 Plug 'int3/vim-taglist-plus'
 
 Plug 'scrooloose/nerdtree'
@@ -72,14 +69,19 @@ Plug 'fholgado/minibufexpl.vim'
 
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
-Plug 'https://github.com/fatih/vim-go'
+Plug 'fatih/vim-go'
+
+Plug 'Blackrush/vim-gocode'
+
+Plug 'nsf/gocode'
+
+" go tagbar "
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
-" if golang is installed, pls use the following cmd to install
-" the necessary binaries
-" git clone https://github.com/golang/tools.git your/gopath/src/golang.org/x/tools
-"
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -287,17 +289,72 @@ endif
 """"""""""""""""""""""""""""""""""""""
 " taglist configuration
 """"""""""""""""""""""""""""""""""""""
-noremap <C-@>m :TlistToggle<CR><CR>
-let Tlist_Auto_Highlight_Tag=1
-let Tlist_Auto_Open=1
-let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
-let Tlist_Display_Tag_Scope=1
-let Tlist_Enable_Fold_Colum=1
-let Tlist_Show_Menu=1
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Use_Right_Window=0
-let Tlist_File_Fold_Auto_Close=0
+"noremap <C-@>m :TlistToggle<CR><CR>
+"let Tlist_Auto_Highlight_Tag=1
+"let Tlist_Auto_Open=1
+"let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
+"let Tlist_Display_Tag_Scope=1
+"let Tlist_Enable_Fold_Colum=1
+"let Tlist_Show_Menu=1
+"let Tlist_Show_One_File=1
+"let Tlist_Exit_OnlyWindow=1
+"let Tlist_Use_Right_Window=0
+"let Tlist_File_Fold_Auto_Close=0
+
+""""""""""""""""""""""""""""""""""""""
+" vim-go configuration
+""""""""""""""""""""""""""""""""""""""
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_highlight_function_calls = 1
+
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_chan_whitespace_error = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_space_tab_error = 1
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_format_strings = 1
+let g:go_fmt_experimental = 1
+
+imap <F2> <C-x><C-o>
+
+""""""""""""""""""""""""""""""""""""""
+" go tagbar configuration
+""""""""""""""""""""""""""""""""""""""
+nmap <C-@>m :TagbarToggle<CR><CR>
+"let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let g:tagbar_left = 1
+"let g:tagbar_vertical = 30
+let g:tagbar_width = 30
+"let g:tagbar_autoclose = 1
+"let g:tagbar_autofocus = 1
+let g:tagbar_indent = 1
+let g:tagbar_previewwin_pos = "aboveleft"
+let g:tagbar_autoshowtag = 1
+let g:tagbar_autopreview = 1
+let g:tagbar_sort = 0
+let g:tagbar_silent = 1
+autocmd VimEnter * nested :call tagbar#autoopen(1)
+
+
+"""""""""""""""""""""""""""""""""""""
+" go-def
+"""""""""""""""""""""""""""""""""""""
+let g:go_def_mode = 'godef'
+let g:go_decls_includes = "func,type"
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
+
 
 """"""""""""""""""""""""""""""""""
 " Doxygen
@@ -331,10 +388,6 @@ map <F12>b :DoxBlock<cr>
 " Commet one line, insert at the end of the line
 map <F12>e A /**<  */<Left><Left>
 map <F12>u O/**<cr>/<Esc>O
-
-"""""""""""""""""""""""""""""""""""
-" vim-go settings
-"""""""""""""""""""""""""""""""""""
 
 
 """""""""""""""""""""""""""""""""""
