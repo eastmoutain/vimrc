@@ -1,4 +1,9 @@
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+export LSCOLORS='gxfxcxdxbxegedabagacad'
+
 alias egrep='egrep -G'
 alias fgrep='fgrep -G'
 alias grep='grep -G'
@@ -11,10 +16,6 @@ alias vi='vim'
 alias ga='git add'
 alias gs='git status'
 alias gd='git diff'
-
-export LSCOLORS='gxfxcxdxbxegedabagacad'
-
-ZSH_THEME="robbyrussell"
 
 # You need to mkdir -p ~/.zsh && cd ~/.zsh
 # Download the two script in ~/.zsh dir
