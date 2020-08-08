@@ -7,9 +7,20 @@ alias ll='ls -l -G'
 alias ls='ls -G'
 alias vi='vim'
 
+# alias for git
+alias ga='git add'
+alias gs='git status'
+alias gd='git diff'
+
 export LSCOLORS='gxfxcxdxbxegedabagacad'
 
 ZSH_THEME="robbyrussell"
+
+# You need to mkdir -p ~/.zsh && cd ~/.zsh
+# Download the two script in ~/.zsh dir
+#
+# curl -o git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+# curl -o _git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)
