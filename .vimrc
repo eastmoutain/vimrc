@@ -326,13 +326,21 @@ let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_format_strings = 1
 let g:go_fmt_experimental = 1
 
-imap <F2> <C-x><C-o>
+""" disable default mappping for ctrl-]
+let g:go_def_mapping_enabled = 0
 
+
+let s:tlist_def_go_settings = 'go;g:enum;s:struct;u:union;t:type;' .
+                           \ 'v:variable;f:function'
+
+nmap <C-@>a :GoDef <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>p :GoDefPop<CR><CR>
+"""nmap <C-@>a :GoDef<CR><CR>
 """"""""""""""""""""""""""""""""""""""
 " go tagbar configuration
 """"""""""""""""""""""""""""""""""""""
 nmap <C-@>m :TagbarToggle<CR><CR>
-"let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_left = 1
 "let g:tagbar_vertical = 30
 let g:tagbar_width = 30
