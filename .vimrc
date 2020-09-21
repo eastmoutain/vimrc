@@ -78,6 +78,9 @@ Plug 'nsf/gocode'
 " go tagbar "
 Plug 'majutsushi/tagbar'
 
+" vimdiff color
+Plug 'joeytwiddle/vim-diff-traffic-lights-colors'
+
 call plug#end()
 
 
