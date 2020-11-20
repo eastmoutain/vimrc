@@ -71,9 +71,6 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 
 Plug 'fatih/vim-go'
 
-Plug 'Blackrush/vim-gocode'
-
-Plug 'nsf/gocode'
 
 " go tagbar "
 Plug 'majutsushi/tagbar'
@@ -164,6 +161,9 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+
+" Sample command W
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
