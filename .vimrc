@@ -78,6 +78,9 @@ Plug 'majutsushi/tagbar'
 " vimdiff color
 Plug 'joeytwiddle/vim-diff-traffic-lights-colors'
 
+"vim color specific world in different color
+Plug 'lfv89/vim-interestingwords'
+
 call plug#end()
 
 
@@ -221,6 +224,29 @@ set si "Smart indent
 set wrap "Wrap lines
 
 """"""""""""""""""""""""""""""
+" => word color
+" Install from
+" https://github.com/lfv89/vim-interestingwords
+"
+"
+""""""""""""""""""""""""""""""
+" disable default mapping
+let g:interestingWordsDefaultMappings = 0
+
+" set color for terminal
+let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
+
+" randomise the colors
+let g:interestingWordsRandomiseColors = 1
+
+nnoremap <silent> <leader>cl :call InterestingWords('n')<cr>
+vnoremap <silent> <leader>cl :call InterestingWords('v')<cr>
+nnoremap <silent> <leader>CL :call UncolorAllWords()<cr>
+
+nnoremap <silent> n :call WordNavigation(1)<cr>
+nnoremap <silent> N :call WordNavigation(0)<cr>
+
+""""""""""""""""""""""""""""""
 " => Ctags
 " Install universal-ctags from
 " https://github.com/universal-ctags/ctags
@@ -337,7 +363,7 @@ let s:tlist_def_go_settings = 'go;g:enum;s:struct;u:union;t:type;' .
                            \ 'v:variable;f:function'
 
 nmap <C-@>a :GoDef <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>p :GoDefPop<CR><CR>
+nmap <C-@>p :GoDefPop<CR>
 """nmap <C-@>a :GoDef<CR><CR>
 """"""""""""""""""""""""""""""""""""""
 " go tagbar configuration
@@ -589,7 +615,8 @@ vnoremap <silent> gv :call VisualSelection('gv')<CR>
 map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
 
 " Vimgreps in the current file
-map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
+"map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
+map <leader><space> :vimgrep <C-R><C-W> % <CR>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
