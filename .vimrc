@@ -71,7 +71,6 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 
 Plug 'fatih/vim-go'
 
-
 " go tagbar "
 Plug 'majutsushi/tagbar'
 
@@ -80,6 +79,9 @@ Plug 'joeytwiddle/vim-diff-traffic-lights-colors'
 
 "vim color specific world in different color
 Plug 'lfv89/vim-interestingwords'
+
+" vim dirdiff
+Plug 'will133/vim-dirdiff'
 
 call plug#end()
 
@@ -358,7 +360,6 @@ let g:go_fmt_experimental = 1
 """ disable default mappping for ctrl-]
 let g:go_def_mapping_enabled = 0
 
-
 let s:tlist_def_go_settings = 'go;g:enum;s:struct;u:union;t:type;' .
                            \ 'v:variable;f:function'
 
@@ -391,6 +392,11 @@ let g:go_def_mode = 'godef'
 let g:go_decls_includes = "func,type"
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
+"""""""""""""""""""""""""""""""""""""
+" dirdiff
+"""""""""""""""""""""""""""""""""""""
+let g:DirDiffExcludes = "CVS,*.class,*.exe,.*.swp,*.o,*.git,*.mod.c,*.ko,*.ko.cmd,*.mod.o.cmd,*.o.cmd,*.o.d,Module.symvers,modules.order"
+let g:DirDiffIgnore = "Id:,Revision:,Date:"
 
 
 """"""""""""""""""""""""""""""""""
