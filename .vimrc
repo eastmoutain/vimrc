@@ -60,6 +60,8 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'Valloric/YouCompleteMe'
 
+Plug 'tpope/vim-fugitive'
+
 " Strip off white space
 Plug 'ntpeters/vim-better-whitespace'
 
@@ -356,6 +358,8 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_format_strings = 1
 let g:go_fmt_experimental = 1
+" auto do format
+let g:go_fmt_autosave = 1
 
 """ disable default mappping for ctrl-]
 let g:go_def_mapping_enabled = 0
@@ -379,9 +383,10 @@ let g:tagbar_width = 30
 let g:tagbar_indent = 1
 let g:tagbar_previewwin_pos = "aboveleft"
 let g:tagbar_autoshowtag = 1
-let g:tagbar_autopreview = 1
+let g:tagbar_autopreview = 0
 let g:tagbar_sort = 0
 let g:tagbar_silent = 1
+" auto opne tagbar
 autocmd VimEnter * nested :call tagbar#autoopen(1)
 
 
@@ -393,8 +398,17 @@ let g:go_decls_includes = "func,type"
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
 """""""""""""""""""""""""""""""""""""
-" dirdiff
-"""""""""""""""""""""""""""""""""""""
+" dirdiff: put this function in your bash profile
+"
+" function dirdiff()
+"{
+"    # Shell-escape each path:
+"    DIR1=$(printf '%q' "$1"); shift
+"    DIR2=$(printf '%q' "$1"); shift
+"    vim $@ -c "DirDiff $DIR1 $DIR2"
+"}
+"
+""""""""""""""""""""""""""""""""""""""
 let g:DirDiffExcludes = "CVS,*.class,*.exe,.*.swp,*.o,*.git,*.mod.c,*.ko,*.ko.cmd,*.mod.o.cmd,*.o.cmd,*.o.d,Module.symvers,modules.order"
 let g:DirDiffIgnore = "Id:,Revision:,Date:"
 
@@ -493,6 +507,29 @@ let g:ycm_semantic_triggers =  {
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+
+""""""""""""""""""""""""""""""
+" vim-fugitive
+""""""""""""""""""""""""""""""
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+
+" default diff in vertial mode
+set diffopt+=vertical
+"set previewheight=20
+" git status
+noremap <leader>gs :Gstatus<CR>
+" git log
+noremap <leader>gl :Glog<CR>
+" git add current file
+noremap <leader>gw :Gwrite %<CR>
+" git reset current file
+noremap <leader>gr :Gread %<CR>
+" git blame
+noremap <leader>gb :Gblame <CR>
+" git diff
+"noremap <leader>gd :Gdiffsplit<CR>
+" git vertical diff split
+noremap <leader>gd :Gvdiffsplit<CR>
 
 """"""""""""""""""""""""""""""
 " indent highlight
