@@ -4,6 +4,8 @@ export LANG=en_US.UTF-8
 
 export LSCOLORS='gxfxcxdxbxegedabagacad'
 
+unsetopt share_history
+
 alias egrep='egrep -G'
 alias fgrep='fgrep -G'
 alias grep='grep -G'
@@ -16,6 +18,15 @@ alias vi='vim'
 alias ga='git add'
 alias gs='git status'
 alias gd='git diff'
+
+# dirdiff
+function dirdiff()
+{
+    # Shell-escape each path:
+    DIR1=$(printf '%q' "$1"); shift
+    DIR2=$(printf '%q' "$1"); shift
+    vim $@ -c "DirDiff $DIR1 $DIR2"
+}
 
 # You need to mkdir -p ~/.zsh && cd ~/.zsh
 # Download the two script in ~/.zsh dir
