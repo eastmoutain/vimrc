@@ -16,7 +16,14 @@ alias gdc='git diff --cached'
 alias ga='git add'
 alias gdv='git difftool -t vimdiff'
 alias gdm='git difftool -t meld'
+#git log
 alias gl='git log'
+#git log oneline
+alias glo='git log --oneline --decorate'
+# git log short
+alias gls='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
+
 alias glc='git log --oneline --graph --decorate'
+alias glsc='git log --oneline --graph --decorate --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 
 alias findx='find . -name '
