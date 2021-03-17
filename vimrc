@@ -393,7 +393,7 @@ autocmd VimEnter * nested :call tagbar#autoopen(1)
 """""""""""""""""""""""""""""""""""""
 " go-def
 """""""""""""""""""""""""""""""""""""
-let g:go_def_mode = 'godef'
+"let g:go_def_mode = 'godef'
 let g:go_decls_includes = "func,type"
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
@@ -480,6 +480,9 @@ hi! SpellRare gui=undercurl guisp=magenta
 noremap <C-@>n :NERDTreeToggle<CR><CR>
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeMouseMode=3
+# refresh nerdtree to display current file path
+let g:NERDTreeChDirMode = 2
+map <leader>r :NERDTreeFind<cr>
 
 """"""""""""""""""""""""""""""
 " YouCompleteMe config file
@@ -525,7 +528,7 @@ noremap <leader>gw :Gwrite %<CR>
 " git reset current file
 noremap <leader>gr :Gread %<CR>
 " git blame
-noremap <leader>gb :Gblame <CR>
+noremap <leader>gb :Git blame <CR>
 " git diff
 "noremap <leader>gd :Gdiffsplit<CR>
 " git vertical diff split
