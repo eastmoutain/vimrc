@@ -42,3 +42,7 @@ export GOBIN=/usr/local/go/bin
 export GOPATH=/Users/dsh/gopath
 
 alias tags='ctags -R -f .tags && cscope -Rbkq -f .cscope.out && touch .ctrlp'
+
+# disable git prompt in zsh
+# git config --global oh-my-zsh.hide-info 1
+
