@@ -480,7 +480,7 @@ hi! SpellRare gui=undercurl guisp=magenta
 noremap <C-@>n :NERDTreeToggle<CR><CR>
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeMouseMode=3
-# refresh nerdtree to display current file path
+" refresh nerdtree to display current file path
 let g:NERDTreeChDirMode = 2
 map <leader>r :NERDTreeFind<cr>
 
