@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# set git color
+git config --global color.ui auto
+
+# config git
+git config --global core.editor vim
