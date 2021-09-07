@@ -287,8 +287,13 @@ if has("cscope")
     set cscopetag " support Ctrl+] and Ctrl+t
     set csto=1
 
-    if filereadable(".cscope.out")
-        cs add .cscope.out
+    let db = findfile(".cscope.out", ".;")
+    if (!empty(db))
+        let path = strpart(db, 0, match(db, "/.cscope.out$"))
+        set nocscopeverbose " suppress 'duplicate connection' error
+        exe "cs add " . db . " " . path
+        set cscopeverbose
+        " else add the database pointed to by environment variable
     elseif $CSCOPE_DB !=""
         cs add $CSCOPE_DB
     endif
@@ -359,7 +364,7 @@ let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_format_strings = 1
 let g:go_fmt_experimental = 1
 " auto do format
-let g:go_fmt_autosave = 1
+"let g:go_fmt_autosave = 1
 
 """ disable default mappping for ctrl-]
 let g:go_def_mapping_enabled = 0
