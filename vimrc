@@ -65,9 +65,6 @@ Plug 'tpope/vim-fugitive'
 " Strip off white space
 Plug 'ntpeters/vim-better-whitespace'
 
-Plug 'kien/ctrlp.vim'
-
-Plug 'fholgado/minibufexpl.vim'
 
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
@@ -84,6 +81,15 @@ Plug 'lfv89/vim-interestingwords'
 
 " vim dirdiff
 Plug 'will133/vim-dirdiff'
+
+" vim last place
+Plug 'farmergreg/vim-lastplace'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" AG VIM
+Plug 'rking/ag.vim'
 
 call plug#end()
 
@@ -281,7 +287,7 @@ endif
 
 """"""""""""""""""""""""""""""
 " => Cscope
-" alias tags='ctags -R -f .tags && cscope -Rbkq -f .cscope.out && touch .ctrlp'
+" alias tags='ctags -R -f .tags && cscope -Rbkq -f .cscope.out'
 """""""""""""""""""""""""""""
 if has("cscope")
     set cscopetag " support Ctrl+] and Ctrl+t
@@ -510,11 +516,31 @@ let g:ycm_semantic_triggers =  {
            \ }
 
 """""""""""""""""""""""""""""
-" ctrlp
+" AG
+""""""""""""""""""""""""""""
+
 """""""""""""""""""""""""""""
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+" fzf
+"""""""""""""""""""""""""""""
+" List Filse
+nnoremap <leader>ff :Files<Cr>
+" List Buffers
+nnoremap <leader>fb :Buffers<Cr>
+" grep
+nnoremap <leader>rg :Ag <C-R>=expand("<cword>")<CR><CR>
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+
 
 """"""""""""""""""""""""""""""
 " vim-fugitive
