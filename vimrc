@@ -91,6 +91,8 @@ Plug 'junegunn/fzf.vim'
 " AG VIM
 Plug 'rking/ag.vim'
 
+Plug 'bagrat/vim-buffet'
+
 call plug#end()
 
 
@@ -263,7 +265,7 @@ nnoremap <silent> N :call WordNavigation(0)<cr>
 " and install it, refer to docs/autotools.rst
 """""""""""""""""""""""""""""
 set tags=./.tags;,.tags
-set autochdir
+"set autochdir
 
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
@@ -498,7 +500,7 @@ map <leader>r :NERDTreeFind<cr>
 """"""""""""""""""""""""""""""
 " YouCompleteMe config file
 """"""""""""""""""""""""""""""
-"let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_server_log_level = 'info'
@@ -523,11 +525,11 @@ let g:ycm_semantic_triggers =  {
 " fzf
 """""""""""""""""""""""""""""
 " List Filse
-nnoremap <leader>ff :Files<Cr>
+nnoremap <leader>ff :Files!<Cr>
 " List Buffers
-nnoremap <leader>fb :Buffers<Cr>
+nnoremap <leader>fb :Buffers!<Cr>
 " grep
-nnoremap <leader>rg :Ag <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>fg :Rg! <C-R>=expand("<cword>")<CR><CR>
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -571,6 +573,16 @@ noremap <leader>gd :Gvdiffsplit<CR>
 let g:indent_guides_enable_on_vim_startup = 1
 
 noremap <C-@>i :IndentGuidesToggle<CR><CR>
+
+
+""""""""""""""""""""""""""""""
+" vim-buffet
+""""""""""""""""""""""""""""""
+noremap <Tab> :bn<CR>
+noremap <S-Tab> :bp<CR>
+noremap <Leader><Tab> :Bw<CR>
+noremap <Leader><S-Tab> :Bw!<CR>
+noremap <Leader>n :tabnew split<CR>
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
