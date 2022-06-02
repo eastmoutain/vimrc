@@ -1,6 +1,7 @@
 #mv this file to ~/.alias and source it in shell file such as ~/.bashrc
 
 # oh-my-zsh don't share history between bashes
+setopt no_share_history
 unsetopt share_history
 
 alias tags='find . -name "*.go" -o -name "*.c" -o -name "*.h" \

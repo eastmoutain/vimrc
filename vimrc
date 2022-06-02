@@ -553,9 +553,9 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 set diffopt+=vertical
 "set previewheight=20
 " git status
-noremap <leader>gs :Gstatus<CR>
+noremap <leader>gs :Git<CR>
 " git log
-noremap <leader>gl :Glog<CR>
+noremap <leader>gl :Gclog<CR>
 " git add current file
 noremap <leader>gw :Gwrite %<CR>
 " git reset current file
@@ -583,6 +583,11 @@ noremap <S-Tab> :bp<CR>
 noremap <Leader><Tab> :Bw<CR>
 noremap <Leader><S-Tab> :Bw!<CR>
 noremap <Leader>n :tabnew split<CR>
+
+function! g:BuffetSetCustomColors()
+  hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#00FF00 guifg=#000000
+endfunction
+
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
