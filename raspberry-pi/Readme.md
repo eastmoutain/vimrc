@@ -1,10 +1,12 @@
 
 ## prepare
 
-- Download clash-linux-armv7-v1.7.0.gz from  https://github.com/Dreamacro/clash/releases
+- armv7: Download clash-linux-armv7-v1.7.0.gz from  https://github.com/Dreamacro/clash/releases
+- x86-64: Download clash-linux-amd64-v3-v1.10.6.gz from  https://github.com/Dreamacro/clash/releases
+
 - Download clash-dashboard from git clone https://github.com/Dreamacro/clash-dashboard.git
 
-### install clash
+### install clash(armv7)
 
 1. extract clash from clash-linux-armv7-v1.7.0.gz with cmd:
 
