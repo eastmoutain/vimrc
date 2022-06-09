@@ -70,3 +70,13 @@ you will see the ui from remote web address
 192.168.1.111:8989/ui
 ```
 
+### auto restart clash after reboot
+Edit crontal and add the folowing contents
+You should place start_clash.sh in the .config dir
+
+```sh
+$ sudo crontab -e
+```
+```c
+@reboot sleep 60 && cd /path/to/.config/clash && sh start_clash.sh
+```
