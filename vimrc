@@ -430,8 +430,11 @@ let HiFind = 'f<tab>'
 " set
 noremap fs :Hi + <C-R> <CR>
 
-" clear
-noremap fc :Hi - <C-R> <CR>
+" erase
+noremap fe :Hi - <C-R> <CR>
+
+" clear all
+noremap fc :Hi :clear <CR>
 
 " previous one
 noremap fk :Hi < <CR>
