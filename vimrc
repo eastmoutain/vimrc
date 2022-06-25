@@ -65,6 +65,7 @@ Plug 'tpope/vim-fugitive'
 " Strip off white space
 Plug 'ntpeters/vim-better-whitespace'
 
+Plug 'fholgado/minibufexpl.vim'
 
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
@@ -78,6 +79,9 @@ Plug 'joeytwiddle/vim-diff-traffic-lights-colors'
 
 "vim color specific world in different color
 Plug 'lfv89/vim-interestingwords'
+
+"highlight words"
+Plug 'azabiong/vim-highlighter'
 
 " vim dirdiff
 Plug 'will133/vim-dirdiff'
@@ -410,6 +414,40 @@ autocmd VimEnter * nested :call tagbar#autoopen(1)
 let g:go_decls_includes = "func,type"
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
+
+"""""""""""""""""""""""""""""""""""""
+" vim-highlighter
+"""""""""""""""""""""""""""""""""""""
+" f + enter
+let HiSet = 'f<CR>'
+" f + backspace
+let HiErase = 'f<BS>'
+" f + ctrl + L
+let HiClear = 'f<C-l>'
+" f + tab
+let HiFind = 'f<tab>'
+
+" set
+noremap fs :Hi + <C-R> <CR>
+
+" clear
+noremap fc :Hi - <C-R> <CR>
+
+" previous one
+noremap fk :Hi < <CR>
+
+" next noe
+noremap fj :Hi > <CR>
+
+" apply the highlight to all split windows
+noremap fa :Hi == <CR>
+
+" switch back to single window (unique) mode
+noremap fu :Hi = <CR>
+
+" find the word under cursor
+noremap fw :Hi/Find <C-R>=expand("<cword>") <CR><CR>
+
 """""""""""""""""""""""""""""""""""""
 " dirdiff: put this function in your bash profile
 "
@@ -529,6 +567,7 @@ nnoremap <leader>ff :Files!<Cr>
 " List Buffers
 nnoremap <leader>fb :Buffers!<Cr>
 " grep
+nnoremap <leader>ag :Ag! <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>fg :Rg! <C-R>=expand("<cword>")<CR><CR>
 
 " [Buffers] Jump to the existing window if possible
