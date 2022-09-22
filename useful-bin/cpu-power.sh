@@ -119,8 +119,9 @@ for (( num = 0; num < $num_processors; num++ )) ; do
         printf "Would set CPU '%d' to '%s'\n" $num $mode
         printf "echo \"$mode\" | sudo tee \"/sys/devices/system/cpu/cpu${num}/cpufreq/scaling_governor\n"
     else
-        printf "Setting CPU '%d' to '%s'\n" $num $mode
-        echo "$mode" | sudo tee "/sys/devices/system/cpu/cpu${num}/cpufreq/scaling_governor"
+        echo -n "Setting CPU $num to "
+        echo -n "$mode" | sudo tee "/sys/devices/system/cpu/cpu${num}/cpufreq/scaling_governor"
+        echo ""
     fi
 done
 
