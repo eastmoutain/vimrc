@@ -30,3 +30,15 @@
   ```sh
   $ mkinitramfs -o ramfs.img
   ```
+
+## dump Linux ACPI Table
+
+- dump ACPI table in binaray file
+    ```sh
+    $ sudo acpidump -b
+    ```
+
+- translate the binary file into text file
+    ```sh
+    $ iasl -d ivrs.dat
+    ```
