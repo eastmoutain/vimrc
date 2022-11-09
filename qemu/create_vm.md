@@ -1,5 +1,21 @@
 # boot linux
 
+# boot linux kernel with qemu
+## Create ramfs
+```sh
+$ mkinitramfs -o ramdisk.img
+```
+
+```sh
+$ qemu-system-x86_64 -kernel arch/x86_64/boot/bzImage \
+                    -nographic  -append "console=ttyS0 nokaslr" \
+                    -initrd ramdisk.img \
+                    -m 512
+```
+
+# Create boot disk
+
+
 ## create hard disk image
 
 For example, create a disk, the size is 50G
