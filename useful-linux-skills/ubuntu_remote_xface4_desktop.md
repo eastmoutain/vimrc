@@ -13,5 +13,17 @@ reboot
 
 ```
 
+# If you should use sudo cmd, you should also:
+
+```sh
+$ su root
+$ echo xfce4-session >~/.xsession
+$ su -
+```
+
+else, you will receive error message:
+
+    "Authorization required, but no authorization protocol specified"
+
 # Reference
 1. https://www.digitalocean.com/community/tutorials/how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu-22-04
