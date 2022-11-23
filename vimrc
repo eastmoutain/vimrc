@@ -541,6 +541,8 @@ let g:NERDTreeChDirMode = 2
 " sync to file in nerdtree window at the current buffer
 map <leader>r :NERDTreeFind<cr>
 
+let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.d$', '\.mod$', '\.order$', '\.a$', '\.so$', '\.ko$']
+
 """"""""""""""""""""""""""""""""
 " NERDTree-sync
 """""""""""""""""""""""""""""""
