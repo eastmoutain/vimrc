@@ -57,6 +57,8 @@ Plug 'justinmk/vim-syntax-extra'
 Plug 'int3/vim-taglist-plus'
 
 Plug 'scrooloose/nerdtree'
+" auto change to current dir
+Plug 'unkiwii/vim-nerdtree-sync'
 
 Plug 'Valloric/YouCompleteMe'
 
@@ -536,7 +538,13 @@ let g:NERDTreeWinPos = "right"
 let g:NERDTreeMouseMode=3
 " refresh nerdtree to display current file path
 let g:NERDTreeChDirMode = 2
+" sync to file in nerdtree window at the current buffer
 map <leader>r :NERDTreeFind<cr>
+
+""""""""""""""""""""""""""""""""
+" NERDTree-sync
+"""""""""""""""""""""""""""""""
+let g:nerdtree_sync_cursorline = 1
 
 """"""""""""""""""""""""""""""
 " YouCompleteMe config file
