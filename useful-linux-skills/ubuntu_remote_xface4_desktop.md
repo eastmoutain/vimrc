@@ -2,15 +2,16 @@
 # How to use remote desktop on ubuntu
 
 ```sh
-sudo apt install xfce4 xfce4-goodies -y
-sudo apt install xrdp -y
-
-echo "xfce4-session" | tee ~/.xsession
-
-sudo systemctl restart xrdp
-
-reboot 
-
+$ sudo apt install xfce4 xfce4-goodies -y
+$ sudo apt install xrdp -y
+$ 
+$ echo "xfce4-session" | tee ~/.xsession
+$ 
+$ sudo systemctl restart xrdp
+$
+$ xhost +local:
+$ 
+$ reboot 
 ```
 
 # If you should use sudo cmd, you should also:
