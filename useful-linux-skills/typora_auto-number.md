@@ -1,5 +1,7 @@
-add the following code to your themes .css file, for example ~/.config/Typora/themes/github.css
+add the following code to your themes .css file, for example
+Linux : ~/.config/Typora/themes/github.css
 
+macOS: /Users/dsh/Library/Application Support/abnerworks.Typora/themes/github.css
 
 
 ```sh
