@@ -196,6 +196,9 @@ syntax enable
 colorscheme desert
 set background=dark
 
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
+
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -257,9 +260,11 @@ let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
 " randomise the colors
 let g:interestingWordsRandomiseColors = 1
 
-nnoremap <silent> <leader>cl :call InterestingWords('n')<cr>
-vnoremap <silent> <leader>cl :call InterestingWords('v')<cr>
-nnoremap <silent> <leader>CL :call UncolorAllWords()<cr>
+" color set
+nnoremap <silent> <leader>cs :call InterestingWords('n')<cr>
+vnoremap <silent> <leader>cs :call InterestingWords('v')<cr>
+" color unset
+nnoremap <silent> <leader>cu :call UncolorAllWords()<cr>
 
 nnoremap <silent> n :call WordNavigation(1)<cr>
 nnoremap <silent> N :call WordNavigation(0)<cr>
