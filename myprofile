@@ -2,7 +2,7 @@
 
 # oh-my-zsh prompt
 # ~/.oh-my-zsh/themes/gianu.zsh-theme
-# PROMPT='[%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[red]%}%m%{$reset_color%} %D{%f/%m} %D{%L:%M:%S} %{$fg[cyan]%}%c %{$reset_color%}]$ '
+# PROMPT='[%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[red]%}%m %{$fg[green]%}%D %* %{$fg[cyan]%}%c %{$reset_color%}]$ '
 #
 # oh-my-zsh don't share history between bashes
 setopt no_share_history
