@@ -2,7 +2,7 @@
 
 ## ubuntu: install mailutils
 ```sh
-$ sudo apt install mailutils -y
+$ sudo apt install -y  mailutils postfix libsasl2-2 ca-certificates libsasl2-modules
 ```
 then slect `OK`, then `Internet Site`
 
