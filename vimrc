@@ -99,6 +99,8 @@ Plug 'rking/ag.vim'
 
 Plug 'bagrat/vim-buffet'
 
+Plug 'voldikss/vim-floaterm'
+
 call plug#end()
 
 
@@ -645,6 +647,18 @@ function! g:BuffetSetCustomColors()
   hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#00FF00 guifg=#000000
 endfunction
 
+""""""""""""""""""""""""""""""
+" vim-floaterm
+""""""""""""""""""""""""""""""
+let g:floaterm_keymap_new = '<Leader>fc'
+let g:floaterm_keymap_prev = '<Leader>fp'
+let g:floaterm_keymap_next = '<Leader>fn'
+let g:floaterm_keymap_first = '<Leader>ff'
+let g:floaterm_keymap_last = '<Leader>fl'
+let g:floaterm_keymap_hide = '<Leader>fh'
+let g:floaterm_keymap_show = '<Leader>fs'
+let g:floaterm_keymap_kill = '<Leader>fk'
+let g:floaterm_keymap_toggle = '<Leader>ft'
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
