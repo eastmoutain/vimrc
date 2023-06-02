@@ -8,6 +8,9 @@
 setopt no_share_history
 unsetopt share_history
 
+# enable xhost on login
+xhost +local: > /dev/null
+
 alias tags='find . -name "*.go" -o -name "*.c" -o -name "*.h" \
              -o -name "*.cc" -o -name "*.hh" -o -name "*.cpp" -o -name "*.hpp" > cscope.files && cscope -b -k -f .cscope.out && \
              rm -rf cscope.files && \
