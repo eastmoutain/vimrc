@@ -12,6 +12,19 @@ $ qemu-system-x86_64 -kernel arch/x86_64/boot/bzImage \
                     -initrd ramdisk.img \
                     -m 512
 ```
+with numa nodes
+```sh
+$ qemu-system-x86_64 -kernel arch/x86_64/boot/bzImage \
+                    -nographic  -append "console=ttyS0 nokaslr" \
+                    -initrd ramdisk.img \
+                    -smp cpus=4 -m 50G \
+                    -object memory-backend-ram,size=25G,id=m0 \
+                    -object memory-backend-ram,size=25G,id=m1 \
+                    -numa node,memdev=m0,cpus=0-1,nodeid=0 \
+                    -numa node,memdev=m1,cpus=2-3,nodeid=1
+
+
+```
 
 # Create boot disk
 
