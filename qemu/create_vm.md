@@ -56,4 +56,16 @@ you can remove `cdrom` argument from the command line.
 * -vga virtio
     enlarge the resolution of qemu GUI
 
+## boot with server image, the image is qcow format
+1. download image from https://cloud-images.ubuntu.com/
 
+2. change password 
+    install tlibguestfs-tools
+    #sudo apt-get install libguestfs-tools
+    #sudo virt-customize -a focal-server-cloudimg-amd64.img --root-password password:root
+
+3. increase image size
+    qemu-img resize focal-server-cloudimg-amd64.img +10G
+    boot the vm
+    # growpart /dev/sda [m]
+    # resize2fs /dev/sda[m]
