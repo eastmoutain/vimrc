@@ -67,7 +67,7 @@ Plug 'tpope/vim-fugitive'
 " Strip off white space
 Plug 'ntpeters/vim-better-whitespace'
 
-Plug 'fholgado/minibufexpl.vim'
+"Plug 'fholgado/minibufexpl.vim'
 
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
@@ -100,6 +100,9 @@ Plug 'rking/ag.vim'
 Plug 'bagrat/vim-buffet'
 
 Plug 'voldikss/vim-floaterm'
+
+" A git commit browser
+Plug 'junegunn/gv.vim'
 
 call plug#end()
 
@@ -614,7 +617,7 @@ set diffopt+=vertical
 " git status
 noremap <leader>gs :Git<CR>
 " git log
-noremap <leader>gl :Gclog<CR>
+"noremap <leader>gl :Gclog<CR>
 " git add current file
 noremap <leader>gw :Gwrite %<CR>
 " git reset current file
@@ -625,6 +628,15 @@ noremap <leader>gb :Git blame <CR>
 "noremap <leader>gd :Gdiffsplit<CR>
 " git vertical diff split
 noremap <leader>gd :Gvdiffsplit<CR>
+
+""""""""""""""""""""""""""""""
+" A git commit browser
+" Plug 'junegunn/gv.vim'
+""""""""""""""""""""""""""""""
+" show git log
+noremap <leader>gl :GV<CR>
+" show git log file
+noremap <leader>gf :GV!<CR>
 
 """"""""""""""""""""""""""""""
 " indent highlight
@@ -653,7 +665,7 @@ endfunction
 let g:floaterm_keymap_new = '<Leader>fc'
 let g:floaterm_keymap_prev = '<Leader>fp'
 let g:floaterm_keymap_next = '<Leader>fn'
-let g:floaterm_keymap_first = '<Leader>ff'
+"let g:floaterm_keymap_first = '<Leader>ff'
 let g:floaterm_keymap_last = '<Leader>fl'
 let g:floaterm_keymap_hide = '<Leader>fh'
 let g:floaterm_keymap_show = '<Leader>fs'
