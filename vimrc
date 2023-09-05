@@ -645,6 +645,14 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 noremap <C-@>i :IndentGuidesToggle<CR><CR>
 
+""""""""""""""""""""""""""""""
+" A git commit browser
+" Plug 'junegunn/gv.vim'
+""""""""""""""""""""""""""""""
+" show git log
+noremap <leader>gl :GV<CR>
+" show git log file
+noremap <leader>gf :GV!<CR>
 
 """"""""""""""""""""""""""""""
 " vim-buffet
