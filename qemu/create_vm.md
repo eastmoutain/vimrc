@@ -22,6 +22,7 @@ $ qemu-system-x86_64 -kernel arch/x86_64/boot/bzImage \
                     -object memory-backend-ram,size=25G,id=m1 \
                     -numa node,memdev=m0,cpus=0-1,nodeid=0 \
                     -numa node,memdev=m1,cpus=2-3,nodeid=1
+                    -chardev pty,id=charserial0 -device isa-serial,chardev=charserial0,id=serial0
 
 
 ```
@@ -69,3 +70,11 @@ you can remove `cdrom` argument from the command line.
     boot the vm
     # growpart /dev/sda [m]
     # resize2fs /dev/sda[m]
+
+## redirect serial port to /dev/pts device
+
+```sh
+-chardev pty,id=charserial0 -device isa-serial,chardev=charserial0,id=serial0
+```
+
+open minicom to see the log from qmeu
