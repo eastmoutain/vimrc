@@ -2,11 +2,23 @@
 
 # oh-my-zsh prompt
 # ~/.oh-my-zsh/themes/gianu.zsh-theme
-# PROMPT='[%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[red]%}%m %{$fg[green]%}%D %* %{$fg[cyan]%}%c %{$reset_color%}]$ '
+# PROMPT='[%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[red]%}%m %{$fg[green]%}%D{%m/%f} %* %{$fg[cyan]%}%c$(git_prompt_info)%{$reset_color%}]$ '
 #
 # oh-my-zsh don't share history between bashes
 setopt no_share_history
 unsetopt share_history
+
+# HACK: Disable git prompt stuff
+# just show git branch
+#function git_prompt_info() {
+#   # nop
+#}
+function parse_git_dirty() {
+   # nop
+}
+function git_prompt_status() {
+   # nop
+}
 
 # enable xhost on login
 xhost +local: > /dev/null
