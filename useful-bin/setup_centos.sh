@@ -23,7 +23,9 @@ sudo yum update -y
 sudo yum groupinstall 'Development Tools'
 sudo yum install -y centos-release-scl devtoolset-8-gcc devtoolset-8-gcc-c++  openssl openssl-devel
 sudo yum install -y git autoconf automake binutils bison flex gettext libtool make patch pkgconfig \
-    redhat-rpm-config rpm-build rpm-sign elfutils indent patchutils curl cscope ripgrep zsh libffi libffi-devel ncurses-devel
+    redhat-rpm-config rpm-build rpm-sign elfutils indent patchutils curl cscope ripgrep zsh libffi libffi-devel ncurses-devel \
+    cmake
+sudo yum install -y elfutils-libelf-devel
 
 sudo yum install -y strace trace-cmd
 

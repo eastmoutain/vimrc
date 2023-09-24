@@ -10,14 +10,20 @@
 # add "Acquire::ForceIPv4 "true";"
 
 # ~/.bashrc
-# http_proxy="http://IP:port
-# https_proxy="http://IP:port
+# PROXY_IP=192.168.1.1
+# PROXY_PORT=7890
+# http_proxy="http://$PROXY_IP:$PROXY_PORT
+# https_proxy="http://$PROXY_IP:$PROXY_PORT
 
 # sudo use proxy, add the line in /etc/sudoers
 # Defaults    env_keep += "ftp_proxy http_proxy https_proxy no_proxy"
 
-# add /usr/local/lib to library search list
+# ld library path: add /usr/local/lib to library search list
 # add "/usr/local/lib" in /etc/ld.so.conf.d/usr-local.conf
+
+# network: add to /etc/network/interfaces
+# auto eth1
+# iface eth1 inet dhcp
 echo "please setup system proxy, then remove return, and try again"
 
 return
@@ -26,9 +32,10 @@ return
 sudo apt update
 sudo apt install build-essential -y
 
-sudo apt install -y gcc g++ git curl
+sudo apt install -y gcc g++ git curl pkg-config
 sudo apt install -y git autoconf automake binutils bison flex gettext libtool make patch \
-                    elfutils indent patchutils curl cscope zsh libffi-dev libncurses5-dev  zlib1g-dev
+                    elfutils indent patchutils curl cscope zsh libffi-dev libncurses5-dev  zlib1g-dev \
+		    ruby ruby-dev bc rsync libelf-dev libssl-dev cmake
 
 sudo apt install -y strace trace-cmd
 
