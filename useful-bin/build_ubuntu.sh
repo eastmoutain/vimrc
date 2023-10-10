@@ -1,7 +1,8 @@
 #!/bin/bash
 
-cp /boot/config-`uname –r`.config
-
+verion=`uname -r`
+echo "cp /boot/config-$verion .config"
+cp /boot/config-$verion .config
 
 scripts/config --disable SYSTEM_TRUSTED_KEYS
 scripts/config --disable SYSTEM_REVOCATION_KEYS
@@ -10,4 +11,5 @@ scripts/config --disable DEBUG_INFO
 
 yes | make olddefconfig
 
-make -j `getconf _NPROCESSORS_ONLN` bindeb-pkg LOCALVERSION=-custom
+nproc=`getconf _NPROCESSORS_ONLN`
+make -j $nproc bindeb-pkg LOCALVERSION=-custom
