@@ -39,6 +39,11 @@ sudo apt install -y git autoconf automake binutils bison flex gettext libtool ma
 
 sudo apt install -y strace trace-cmd
 
+#setup certificate
+sudo apt install ca-certificates
+sudo update-ca-certificates --fresh
+export SSL_CERT_DIR=/etc/ssl/certs
+
 mkdir software
 cd software
 git clone https://github.com/eastmoutain/vimrc
