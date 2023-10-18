@@ -71,6 +71,13 @@ you can remove `cdrom` argument from the command line.
     # growpart /dev/sda [m]
     # resize2fs /dev/sda[m]
 
+    ```sh
+    $ sudo ssh-keygen -A 
+    $ sudo vi /etc/ssh/sshd_config
+       # chanage `PasswordAuthentication yes` 
+    $ sudo service ssh restart
+    ```
+
 ## redirect serial port to /dev/pts device
 
 ```sh
