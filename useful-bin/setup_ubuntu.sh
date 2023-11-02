@@ -24,6 +24,10 @@
 # network: add to /etc/network/interfaces
 # auto eth1
 # iface eth1 inet dhcp
+
+# can's ssh to the machiceh
+# sudo ssh-keygen -A
+# and set "PasswordAuthentication  yse"
 echo "please setup system proxy, then remove return, and try again"
 
 return
@@ -80,9 +84,10 @@ sudo rm -rf Python-3.10.13.tgz Python-3.10.13
 wget https://www.python.org/ftp/python/3.10.13/Python-3.10.13.tgz
 sudo tar xvf Python-3.10.13.tgz
 cd Python-3.10.13
-./configure --enable-optimizations --enable-shared
+./configure --enable-optimizations --enable-shared -with-zlib=/usr/local/include
 sudo make -j64 altinstall
 cd ..
+
 
 
 #install vim
@@ -98,6 +103,10 @@ cd vim
     --enable-fail-if-missing
 make -j64 && sudo make install
 cd ..
+
+# install youcomplementme
+sudo apt install vim-youcompleteme
+vim-addon-manager install youcompleteme
 
 ##install fzf
 #git clone --depth 1 https://github.com/junegunn/fzf.git fzf
