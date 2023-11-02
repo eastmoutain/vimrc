@@ -85,3 +85,18 @@ you can remove `cdrom` argument from the command line.
 ```
 
 open minicom to see the log from qmeu
+
+## share host foler with qemu guest
+   1. build qemu with virtfs enabled, adding the following line to qemu configure.sh args
+      ```sh
+      --enable-virtfs
+      ```
+   2. boot qemu with cmd args
+      ```sh
+      -virtfs local,path=/path/to/share,mount_tag=host0,security_model=passthrough,id=host0 \
+      ```
+   3. mount the shared folder in guest
+      edit guest /etc/fstab, add lines:
+      ```sh
+      host0  /home/thomas/hostshare  9p trans=virtio,version9p2000.L 0 0
+      ```
