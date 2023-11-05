@@ -1,0 +1,33 @@
+# 1. create the service file
+# /etc/systemd/system/system_example.service
+
+# 2. Reload the service files to include the new service
+#sudo systemctl daemon-reload
+
+# 3. enable example.service
+#sudo systemctl enable example.service
+#
+# 4. Start your example.service
+#sudo systemctl start example.service
+
+# (optional) check status
+#sudo systemctl status example.service
+
+# (optinal) disalbe example.server
+#sudo systemctl disable example.service
+
+[Unit]
+Description="example service"
+After=syslog.target
+After=network.target
+
+[Service]
+User=user_name
+WorkingDirectory=/path/to/workdir
+ExecStart=/xxx/bin/sh yyy.sh
+# optional items below
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
