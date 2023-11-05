@@ -21,13 +21,37 @@
 # ld library path: add /usr/local/lib to library search list
 # add "/usr/local/lib" in /etc/ld.so.conf.d/usr-local.conf
 
+# enable ssh login with password
+# edit /etc/ssh/sshd_config
+# set "PubkeyAuthentication yes"
+# set "PasswordAuthentication yes"
+
+# install network manager
+# sudo apt-get install network-manager
+# sudo systemctl start NetworkManager
+# set "managed=true" in /etc/NetworkManager/NetworkManager.conf
+# Disable waitting network online service
+# systemctl disable systemd-networkd-wait-online.service
+
+# sshd configure
+# sudo ssh-keygen -A
+# sudo /usr/sbin/sshd -T
+
 # network: add to /etc/network/interfaces
 # auto eth1
 # iface eth1 inet dhcp
 
-# can's ssh to the machiceh
+# can't ssh to the machine
 # sudo ssh-keygen -A
 # and set "PasswordAuthentication  yse"
+#
+# enable dhclient in /etc/rc.local
+#===========================
+# #!/bin/sh
+# dhclient
+#===========================
+# chmod +x /etc/rd.lcoal
+
 echo "please setup system proxy, then remove return, and try again"
 
 return
