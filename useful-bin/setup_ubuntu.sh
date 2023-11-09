@@ -94,15 +94,21 @@ cd ctags
 cd ..
 
 #install openssl
-sudo rm -rf  openssl-1.1.1w
-wget https://www.openssl.org/source/openssl-1.1.1w.tar.gz
-tar zxvf openssl-1.1.1w.tar.gz
-cd openssl-1.1.1w
-./config --prefix=/usr --openssldir=/usr shared zlib
-make
-make test
-sudo make install
-cd ..
+
+wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/openssl_1.1.1f-1ubuntu2.20_amd64.deb
+wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl-dev_1.1.1f-1ubuntu2_amd64.deb
+wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb
+sudo dpkg -i openssl_1.1.1f-1ubuntu2.20_amd64.deb libssl-dev_1.1.1f-1ubuntu2_amd64.deb libssl1.1_1.1.1f-1ubuntu2_amd64.deb 
+
+#sudo rm -rf  openssl-1.1.1w
+#wget https://www.openssl.org/source/openssl-1.1.1w.tar.gz
+#tar zxvf openssl-1.1.1w.tar.gz
+#cd openssl-1.1.1w
+#./config --prefix=/usr --openssldir=/usr shared zlib
+#make
+#make test
+#sudo make install
+#cd ..
 
 #install cmake3
 sudo rm -rf cmake-3.27.5-linux-x86_64.sh
