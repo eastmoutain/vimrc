@@ -57,15 +57,19 @@ echo "please setup system proxy, then remove return, and try again"
 return
 
 
-sudo apt update
+sudo apt upgrade update
 sudo apt install build-essential -y
 
-sudo apt install -y gcc g++ git curl pkg-config
+sudo apt install -y gcc g++ git curl pkg-config zsh
 sudo apt install -y git autoconf automake binutils bison flex gettext libtool make patch \
                     elfutils indent patchutils curl cscope zsh libffi-dev libncurses5-dev  zlib1g-dev \
 		    ruby ruby-dev bc rsync libelf-dev libssl-dev cmake
 
 sudo apt install -y strace trace-cmd
+
+#install zsh from gitee
+# reference: https://gitee.com/Devkings/oh_my_zsh_install
+sh -c "$(curl -fsSL https://gitee.com/Devkings/oh_my_zsh_install/raw/master/install.sh)"
 
 #setup certificate
 sudo apt install ca-certificates
