@@ -75,6 +75,8 @@ you can remove `cdrom` argument from the command line.
     $ sudo ssh-keygen -A 
     $ sudo vi /etc/ssh/sshd_config
        # chanage `PasswordAuthentication yes` 
+     $ sudo vi /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
+	# chanage `PasswordAuthentication yes`
     $ sudo service ssh restart
     ```
 
