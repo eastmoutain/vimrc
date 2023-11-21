@@ -21,3 +21,6 @@ reference: https://docs.amd.com/en/latest/deploy/linux/quick_start.html
 $ sudo apt install rocm-hip-libraries
 ```
 
+## follow the guide, then install rocm-hip-sdk
+
+
