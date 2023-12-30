@@ -1,0 +1,86 @@
+From 0ad824fbecd09a91d386a77d1b3c2714d90bb59f Mon Sep 17 00:00:00 2001
+From: thomas <thomasyang1206@126.com>
+Date: Sat, 30 Dec 2023 19:11:00 +0800
+Subject: [PATCH] dump user page table
+
+build kernel with CONFIG_PTDUMP_CORE and CONFIG_PTDUMP_DEBUGFS enabled
+scripts/config --file .config --enable CONFIG_PTDUMP_CORE
+scripts/config --file .config --enable CONFIG_PTDUMP_DEBUGFS
+
+dump kernel page table
+    $ cat /sys/kernel/debug/page_tables/kernel | more
+
+dump user page table by pid
+    $ echo pid > /proc/sys/debug/pgt_dump_process_id
+    $ cat /sys/kernel/debug/page_tables/user | more
+---
+ arch/x86/mm/debug_pagetables.c | 16 ++++++++++++++++
+ kernel/sysctl.c                | 11 ++++++++++-
+ 2 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/arch/x86/mm/debug_pagetables.c b/arch/x86/mm/debug_pagetables.c
+index 092ea436c7e6..f1769eef63f0 100644
+--- a/arch/x86/mm/debug_pagetables.c
++++ b/arch/x86/mm/debug_pagetables.c
+@@ -31,6 +31,20 @@ static int ptdump_curusr_show(struct seq_file *m, void *v)
+ }
+ 
+ DEFINE_SHOW_ATTRIBUTE(ptdump_curusr);
++
++extern int rjm_pgt_dump_process_id;
++static int ptdump_usr_show(struct seq_file *m, void *v)
++{
++    struct task_struct *task;
++    if (rjm_pgt_dump_process_id > 0) {
++        task = pid_task(find_vpid(rjm_pgt_dump_process_id), PIDTYPE_PID);
++	    if (task && task->mm && task->mm->pgd)
++	    	ptdump_walk_pgd_level_debugfs(m, task->mm, true);
++    }
++	return 0;
++}
++DEFINE_SHOW_ATTRIBUTE(ptdump_usr);
++
+ #endif
+ 
+ #if defined(CONFIG_EFI) && defined(CONFIG_X86_64)
+@@ -57,6 +71,8 @@ static int __init pt_dump_debug_init(void)
+ #ifdef CONFIG_PAGE_TABLE_ISOLATION
+ 	debugfs_create_file("current_user", 0400, dir, NULL,
+ 			    &ptdump_curusr_fops);
++	debugfs_create_file("user", 0400, dir, NULL,
++			    &ptdump_usr_fops);
+ #endif
+ #if defined(CONFIG_EFI) && defined(CONFIG_X86_64)
+ 	debugfs_create_file("efi", 0400, dir, NULL, &ptdump_efi_fops);
+diff --git a/kernel/sysctl.c b/kernel/sysctl.c
+index afad085960b8..f6b4633157b3 100644
+--- a/kernel/sysctl.c
++++ b/kernel/sysctl.c
+@@ -3340,6 +3340,8 @@ static struct ctl_table fs_table[] = {
+ 	{ }
+ };
+ 
++int rjm_pgt_dump_process_id = -1;
++
+ static struct ctl_table debug_table[] = {
+ #ifdef CONFIG_SYSCTL_EXCEPTION_TRACE
+ 	{
+@@ -3361,7 +3363,14 @@ static struct ctl_table debug_table[] = {
+ 		.extra2		= SYSCTL_ONE,
+ 	},
+ #endif
+-	{ }
++    {
++        .procname = "pgt_dump_process_id",
++        .data = &rjm_pgt_dump_process_id,
++        .maxlen = sizeof(int),
++        .mode = 0644,
++        .proc_handler = proc_dointvec
++    },
++    { }
+ };
+ 
+ static struct ctl_table dev_table[] = {
+-- 
+2.34.1
+
