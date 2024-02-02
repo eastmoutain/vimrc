@@ -63,7 +63,7 @@ sudo apt install build-essential -y
 sudo apt install -y gcc g++ git curl pkg-config zsh
 sudo apt install -y git autoconf automake binutils bison flex gettext libtool make patch \
                     elfutils indent patchutils curl cscope zsh libffi-dev libncurses5-dev  zlib1g-dev \
-		    ruby ruby-dev bc rsync libelf-dev libssl-dev cmake
+		    ruby ruby-dev bc rsync libelf-dev libssl-dev cmake locales-all
 
 sudo apt install -y strace trace-cmd
 
