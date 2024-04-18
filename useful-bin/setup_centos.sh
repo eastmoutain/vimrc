@@ -76,8 +76,6 @@ git clone https://github.com/vim/vim.git
 cd vim
 ./configure --with-features=huge --enable-multibyte \
     --enable-rubyinterp=yes --enable-python3interp=yes \
-    --with-python3-command=python3.10 \
-    --with-python3-config-dir=/usr/local/lib/python3.10/config-3.10-x86_64-linux-gnu \
     --enable-cscope \
     --prefix=/usr/local \
     --enable-fail-if-missing

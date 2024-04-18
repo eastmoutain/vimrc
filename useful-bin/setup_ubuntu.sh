@@ -56,11 +56,14 @@ echo "please setup system proxy, then remove return, and try again"
 
 return
 
+#setup local language
+sudo locale-gen en_US en_US.UTF-8
+sudo dpkg-reconfigure locales
 
 sudo apt upgrade update
 sudo apt install build-essential -y
 
-sudo apt install -y gcc g++ git curl pkg-config zsh
+sudo apt install -y gcc g++ git curl pkg-config
 sudo apt install -y git autoconf automake binutils bison flex gettext libtool make patch \
                     elfutils indent patchutils curl cscope zsh libffi-dev libncurses5-dev  zlib1g-dev \
 		    ruby ruby-dev bc rsync libelf-dev libssl-dev cmake locales-all
@@ -124,8 +127,6 @@ git clone https://github.com/vim/vim.git
 cd vim
 ./configure --with-features=huge --enable-multibyte \
     --enable-rubyinterp=yes --enable-python3interp=yes \
-    --with-python3-command=python3.10 \
-    --with-python3-config-dir=/usr/local/lib/python3.10/config-3.10-x86_64-linux-gnu \
     --enable-cscope \
     --prefix=/usr/local \
     --enable-fail-if-missing
