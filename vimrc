@@ -569,6 +569,8 @@ let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_strings=1
 let g:ycm_key_invoke_completion = '<c-z>'
+" don't insert include header automatically
+let g:ycm_clangd_args=['--header-insertion=never']
 set completeopt=menu,menuone
 
 noremap <c-z> <NOP>
