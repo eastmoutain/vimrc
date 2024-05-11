@@ -104,6 +104,9 @@ Plug 'voldikss/vim-floaterm'
 " A git commit browser
 Plug 'junegunn/gv.vim'
 
+" gitgutter
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 
@@ -655,6 +658,14 @@ noremap <C-@>i :IndentGuidesToggle<CR><CR>
 noremap <leader>gl :GV<CR>
 " show git log file
 noremap <leader>gf :GV!<CR>
+
+""""""""""""""""""""""""""""""
+" Plug 'airblade/vim-gitgutter'
+""""""""""""""""""""""""""""""
+let g:gitgutter_max_signs = 500  " default value (Vim < 8.1.0614, Neovim < 0.4.0)
+let g:gitgutter_max_signs = -1   " default value (otherwise)
+
+
 
 """"""""""""""""""""""""""""""
 " vim-buffet
