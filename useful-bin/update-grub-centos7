@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# rename the file to update-grub and isntall it
+# $ sudo cp update-grub-centos /usr/bin
+
+#BIOS:
+grub2-mkconfig -o /boot/grub2/grub.cfg
+
+#EFI:
+grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
