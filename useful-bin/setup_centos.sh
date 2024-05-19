@@ -22,7 +22,7 @@ return
 sudo yum update -y
 sudo yum groupinstall 'Development Tools'
 sudo yum install -y centos-release-scl devtoolset-7 devtoolset-8 devtoolset-9 devtoolset-11
-sudo yum install -y openssl openssl-devel glib2 glib2-devel
+sudo yum install -y openssl openssl-devel glib2 glib2-devel pixman pixman-devel
 sudo yum install -y git autoconf automake binutils bison flex gettext libtool make patch pkgconfig \
     redhat-rpm-config rpm-build rpm-sign elfutils indent patchutils curl cscope ripgrep \
     zsh libffi libffi-devel ncurses-devel cmake locales-all
