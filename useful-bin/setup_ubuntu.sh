@@ -63,12 +63,18 @@ sudo dpkg-reconfigure locales
 sudo apt upgrade update
 sudo apt install build-essential -y
 
-sudo apt install -y gcc g++ git curl pkg-config
+sudo apt install -y gcc g++ git curl pkg-config libglib2.0-dev
 sudo apt install -y git autoconf automake binutils bison flex gettext libtool make patch \
                     elfutils indent patchutils curl cscope zsh libffi-dev libncurses5-dev  zlib1g-dev \
 		    ruby ruby-dev bc rsync libelf-dev libssl-dev cmake locales-all
 
 sudo apt install -y strace trace-cmd
+
+# install libvirt
+sudo apt install qemu-kvm libvirt-daemon-system
+sudo adduser $USER libvirt
+# use lagcy iptable, some platform can't create virbr0 NIC
+sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
 
 #install zsh from gitee
 # reference: https://gitee.com/Devkings/oh_my_zsh_install
