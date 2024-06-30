@@ -61,14 +61,20 @@ sudo locale-gen en_US en_US.UTF-8
 sudo dpkg-reconfigure locales
 
 sudo apt upgrade update
-sudo apt install build-essential -y
+sudo apt install -y build-essential
+sudo apt install -y zsh cscope
 
 sudo apt install -y gcc g++ git curl pkg-config libglib2.0-dev
-sudo apt install -y git autoconf automake binutils bison flex gettext libtool make patch \
-                    elfutils indent patchutils curl cscope zsh libffi-dev libncurses5-dev  zlib1g-dev \
-		    ruby ruby-dev bc rsync libelf-dev libssl-dev cmake locales-all
+sudo apt install -y git autoconf automake binutils bison flex gettext \
+                    libtool make patch elfutils indent patchutils curl cscope \
+                    libffi-dev libncurses5-dev  zlib1g-dev \
+		            ruby ruby-dev bc rsync libelf-dev libssl-dev cmake \
+                    locales-all
 
 sudo apt install -y strace trace-cmd
+
+# for build qemu
+sudo apt install -y device-tree-compiler qemu-keymaps
 
 # install libvirt
 sudo apt install qemu-kvm libvirt-daemon-system
