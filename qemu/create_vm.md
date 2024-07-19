@@ -102,3 +102,14 @@ open minicom to see the log from qmeu
       ```sh
       host0  /home/thomas/hostshare  9p trans=virtio,version9p2000.L 0 0
       ```
+
+# config network of ubuntu clould iamge
+    create or open file /etc/netplan 01-netcfg.yaml
+```yaml
+network:
+    version: 2
+    renderer: networkd
+    ethernets:
+        enp0s3:
+            dhcp4: true
+```
