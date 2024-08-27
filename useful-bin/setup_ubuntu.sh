@@ -62,14 +62,13 @@ sudo dpkg-reconfigure locales
 
 sudo apt upgrade update
 sudo apt install -y build-essential
-sudo apt install -y zsh cscope
 
 sudo apt install -y gcc g++ git curl pkg-config libglib2.0-dev
 sudo apt install -y git autoconf automake binutils bison flex gettext \
                     libtool make patch elfutils indent patchutils curl cscope \
                     libffi-dev libncurses5-dev  zlib1g-dev \
 		            ruby ruby-dev bc rsync libelf-dev libssl-dev cmake \
-                    locales-all
+                    locales-all cscope
 
 sudo apt install -y strace trace-cmd
 
@@ -82,14 +81,7 @@ sudo adduser $USER libvirt
 # use lagcy iptable, some platform can't create virbr0 NIC
 sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
 
-#install zsh from gitee
-# reference: https://gitee.com/Devkings/oh_my_zsh_install
-sh -c "$(curl -fsSL https://gitee.com/Devkings/oh_my_zsh_install/raw/master/install.sh)"
 
-#setup certificate
-sudo apt install ca-certificates
-sudo update-ca-certificates --fresh
-export SSL_CERT_DIR=/etc/ssl/certs
 
 mkdir software
 cd software
@@ -105,22 +97,6 @@ cd ctags
 ./autogen.sh && ./configure --prefix=/usr/local && make -j4 && sudo make install
 cd ..
 
-#install openssl
-
-wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/openssl_1.1.1f-1ubuntu2.20_amd64.deb
-wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl-dev_1.1.1f-1ubuntu2_amd64.deb
-wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb
-sudo dpkg -i openssl_1.1.1f-1ubuntu2.20_amd64.deb libssl-dev_1.1.1f-1ubuntu2_amd64.deb libssl1.1_1.1.1f-1ubuntu2_amd64.deb 
-
-#sudo rm -rf  openssl-1.1.1w
-#wget https://www.openssl.org/source/openssl-1.1.1w.tar.gz
-#tar zxvf openssl-1.1.1w.tar.gz
-#cd openssl-1.1.1w
-#./config --prefix=/usr --openssldir=/usr shared zlib
-#make
-#make test
-#sudo make install
-#cd ..
 
 #install cmake3
 sudo rm -rf cmake-3.27.5-linux-x86_64.sh
@@ -151,15 +127,11 @@ cd vim
 make -j64 && sudo make install
 cd ..
 
-# install youcomplementme
-sudo apt install vim-youcompleteme
-vim-addon-manager install youcompleteme
-
 ##install fzf
 #git clone --depth 1 https://github.com/junegunn/fzf.git fzf
 #cd fzf && ./install
 #cd ..
 
-#install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#install oh-my-bash
+bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
 

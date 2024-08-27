@@ -24,8 +24,8 @@ sudo yum groupinstall 'Development Tools'
 sudo yum install -y centos-release-scl devtoolset-7 devtoolset-8 devtoolset-9 devtoolset-11
 sudo yum install -y openssl openssl-devel glib2 glib2-devel pixman pixman-devel
 sudo yum install -y git autoconf automake binutils bison flex gettext libtool make patch pkgconfig \
-    redhat-rpm-config rpm-build rpm-sign elfutils indent patchutils curl cscope ripgrep \
-    zsh libffi libffi-devel ncurses-devel cmake locales-all
+     redhat-rpm-config rpm-build rpm-sign elfutils indent patchutils curl cscope ripgrep \
+     libffi libffi-devel ncurses-devel cmake locales-all
 sudo yum install -y elfutils-libelf-devel
 
 sudo yum install -y strace trace-cmd
@@ -44,16 +44,6 @@ cd ctags
 ./autogen.sh && ./configure --prefix=/usr/local && make -j4 && sudo make install
 cd ..
 
-#install openssl
-sudo rm -rf  openssl-1.1.1w
-wget https://www.openssl.org/source/openssl-1.1.1w.tar.gz
-tar zxvf openssl-1.1.1w.tar.gz
-cd openssl-1.1.1w
-./config --prefix=/usr --openssldir=/usr shared zlib
-make
-make test
-sudo make install
-cd ..
 
 #install cmake3
 sudo rm -rf cmake-3.27.5-linux-x86_64.sh
@@ -88,6 +78,6 @@ cd ..
 #cd fzf && ./install
 #cd ..
 
-#install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#install oh-my-bash
+bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
 
