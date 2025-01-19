@@ -252,12 +252,16 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => set color column width and color
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set colorcolumn=80
+highlight ColorColumn ctermbg=238
+
 """"""""""""""""""""""""""""""
 " => word color
 " Install from
 " https://github.com/lfv89/vim-interestingwords
-"
-"
 """"""""""""""""""""""""""""""
 " disable default mapping
 let g:interestingWordsDefaultMappings = 0
@@ -329,21 +333,21 @@ if has("cscope")
     set cscoperelative " can use realative path
 
     " find this C symbal
-    nmap <C-Space>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
     " find this definition
-    nmap <C-Space>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
     " find functions calling this function
-    nmap <C-Space>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
     " find assignments to
-    nmap <C-Space>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
     " find this egrep pattern
-    nmap <C-Space>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
     " find this file
-    nmap <C-Space>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
     " find files #including this file
-    nmap <C-Space>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     " find functions called by this function
-    nmap <C-Space>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
     set notimeout
     set timeoutlen=4000
@@ -354,7 +358,7 @@ endif
 """"""""""""""""""""""""""""""""""""""
 " taglist configuration
 """"""""""""""""""""""""""""""""""""""
-"noremap <C-Space>m :TlistToggle<CR><CR>
+"noremap <C-@>m :TlistToggle<CR><CR>
 "let Tlist_Auto_Highlight_Tag=1
 "let Tlist_Auto_Open=1
 "let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
@@ -399,13 +403,13 @@ let g:go_def_mapping_enabled = 0
 let s:tlist_def_go_settings = 'go;g:enum;s:struct;u:union;t:type;' .
                            \ 'v:variable;f:function'
 
-nmap <C-Space>a :GoDef <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>p :GoDefPop<CR>
-"""nmap <C-Space>a :GoDef<CR><CR>
+nmap <C-@>a :GoDef <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>p :GoDefPop<CR>
+"""nmap <C-@>a :GoDef<CR><CR>
 """"""""""""""""""""""""""""""""""""""
 " go tagbar configuration
 """"""""""""""""""""""""""""""""""""""
-nmap <C-Space>m :TagbarToggle<CR><CR>
+nmap <C-@>m :TagbarToggle<CR><CR>
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_left = 1
 "let g:tagbar_vertical = 30
@@ -546,7 +550,7 @@ hi! SpellRare gui=undercurl guisp=magenta
 """"""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""
-noremap <C-Space>n :NERDTreeToggle<CR><CR>
+noremap <C-@>n :NERDTreeToggle<CR><CR>
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeMouseMode=3
 " refresh nerdtree to display current file path
@@ -596,7 +600,7 @@ nnoremap <leader>ff :Files!<Cr>
 nnoremap <leader>fb :Buffers!<Cr>
 " grep
 nnoremap <leader>ag :Ag! <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>fg :Rg! <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>rg :Rg! <C-R>=expand("<cword>")<CR><CR>
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -648,7 +652,7 @@ noremap <leader>gf :GV!<CR>
 """"""""""""""""""""""""""""""
 let g:indent_guides_enable_on_vim_startup = 1
 
-noremap <C-Space>i :IndentGuidesToggle<CR><CR>
+noremap <C-@>i :IndentGuidesToggle<CR><CR>
 
 """"""""""""""""""""""""""""""
 " A git commit browser
