@@ -107,6 +107,9 @@ Plug 'junegunn/gv.vim'
 " gitgutter
 Plug 'airblade/vim-gitgutter'
 
+" llama.vim
+Plug 'ggml-org/llama.vim'
+
 call plug#end()
 
 
@@ -669,7 +672,14 @@ noremap <leader>gf :GV!<CR>
 let g:gitgutter_max_signs = 500  " default value (Vim < 8.1.0614, Neovim < 0.4.0)
 let g:gitgutter_max_signs = -1   " default value (otherwise)
 
+""""""""""""""""""""""""""""""
+" Plug 'ggml-org/llama.vim'
+" set the IP of server.
+" The server should be started with the following command
+" llama-server --host 192.168.1.102 --port 8012 --model model.gguf
+""""""""""""""""""""""""""""""
 
+let g:llama_config = { 'endpoint' : 'http://192.168.1.102:8012/infill' }
 
 """"""""""""""""""""""""""""""
 " vim-buffet
