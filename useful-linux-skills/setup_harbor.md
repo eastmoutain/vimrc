@@ -1,5 +1,13 @@
 # 配置harbor
 
+# a example of harbor config of aliyun server
+
+Refer to useful-linux-skills/harbor.yml
+
+> Note: the server use a public IP and internal private IP, you should:
+        1. set the public IP as hostname, and add `relativeurls: true`
+           in http section.
+        2. uncomment `external_url: http://public_ip`
 
 
 # server
@@ -61,17 +69,28 @@ Reference: https://goharbor.io/docs/2.12.0/install-config/download-installer/
 	sudo ./install.sh
 	```
 
+5. reinstall
+
+    ```sh
+    sudo docker compose down -v
+    # do some update
+    sudo ./install.sh
+    ```
 	
-
-
-
 # client
 
 if you access the server with http, you need to config your client docker.  edit `/etc/docker/daemon.json`,  add the following:
 
 ```sh
 {
-        "insecure-registries" : ["10.59.41.49:5000", "0.0.0.0/0"]
+        "insecure-registries" : ["10.59.41.49:80", "0.0.0.0/0"]
+}
+```
+or 
+
+```sh
+{
+        "insecure-registries" : ["10.59.41.49", "0.0.0.0/0"]
 }
 ```
 
@@ -107,7 +126,7 @@ sudo systemctl restart docker
 	For example, you have a local image `local/anolis8.4:latest `, tag it with server address.
 
 	```sh
-	docker tag local/anolis8.4:latest 10.59.41.49:5000/anolis/anolis8.4:latest
+	docker tag local/anolis8.4:latest 10.59.41.49:80/anolis/anolis8.4:latest
 	```
 
 	
@@ -115,14 +134,14 @@ sudo systemctl restart docker
 3. Push image to docker hub
 
 	```sh
-	docker tag local/anolis8.4:latest 10.59.41.49/anolis/anolis8.4:latest
-	docker push 10.59.41.49/anolis/anolis8.4
+	docker tag local/anolis8.4:latest 10.59.41.49:80/anolis/anolis8.4:latest
+	docker push 10.59.41.49:80/anolis/anolis8.4
 	```
 
 4. Pull image 
 
 	```sh
-	docker pull 10.59.41.49/anolis/anolis8.4
+	docker pull 10.59.41.49:80/anolis/anolis8.4
 	```
 
 	
