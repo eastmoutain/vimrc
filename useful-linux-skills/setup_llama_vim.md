@@ -14,7 +14,7 @@ URL: https://github.com/ggml-org/llama.cpp/releases
 
 ## build from souce code
 
-Download source code
+* Download source code
 
 ```sh
 git clone https://github.com/ggml-org/llama.cpp --depth=1
@@ -22,7 +22,8 @@ cd llama.cpp
 git fetch --unshdow
 ```
 
-Build for CUAD GPU.
+* Build for CUAD GPU
+
 ```sh
 mkdir build
 cd build 
@@ -30,7 +31,7 @@ cmake -B build -DGGML_CUDA=ON ..
 cmake --build build --config Release
 ```
 
-Build for AMDGPU
+* Build for AMDGPU
 
 Adjust you AMDGPU_TARGETS accordingly. Get your AMDGPU type with cmd:
 ```sh
@@ -41,10 +42,30 @@ Name:                    gfx1100
 ```sh
 HIPCXX="$(hipconfig -l)/clang" HIP_PATH="$(hipconfig -R)" \
     cmake -S . -B build -DGGML_HIP=ON -DAMDGPU_TARGETS=gfx1100 -DCMAKE_BUILD_TYPE=Release \
-    && cmake --build build --config Release -- -j 16
+    -DLLAMA_CURL=ON && cmake --build build --config Release -- -j 16
+```
+After build, you can find the executable at build/bin/llama-server. Here we copy
+the `build` dir to `/opt/llama_amdgpu/build`. And add the executable to your PATH
+variable.
+
+```sh
+export PATH=$PATH:/opt/llama_amdgpu/build/bin
 ```
 
+* Download the model for llama.cpp
+
+The offical website recommend to download the model from huggingface. Here is
+an exmaple of download the model with llama.cli
+
+```sh
+llama-cli --hf-repo ggml-org/Qwen2.5-Coder-7B-Q8_0-GGUF \
+          --hf-file qwen2.5-coder-7b-q8_0.gguf \
+          -p "The meaning to life and the universe is"
+```
+The model is downloaded to `~/.cache/llama.cpp` by default.
+
 # How to config remote server
+
 On the server side, you need to install the llama.cpp and run llama-server.
 Here is a linux kernel sevice template to start llama-server automatically.
 
@@ -83,6 +104,7 @@ RestartSec=3
 [Install]
 WantedBy=multi-user.target
 ```
+
 Install the service file at /etc/systemd/system/llama.service, then run the
 command below to start the service.
 
