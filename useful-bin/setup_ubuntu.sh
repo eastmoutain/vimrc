@@ -81,7 +81,8 @@ sudo adduser $USER libvirt
 # use lagcy iptable, some platform can't create virbr0 NIC
 sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
 
-
+# install brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 mkdir software
 cd software

@@ -37,6 +37,9 @@ cp vimrc/vimrc /home/thomas/.vimrc
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+#install brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 #install ctags
 sudo rm -rf ctags
 git clone https://github.com/universal-ctags/ctags
