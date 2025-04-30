@@ -7,7 +7,11 @@ export LC_ALL=en_US.UTF-8
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# ohmyzsh
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#PROMPT='[%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[yellow]%}%m %{$fg[green]%}%D{%m/%f} %* %{$fg[cyan]%}%c$(git_prompt_info)%{$reset_color%}]$ '
 # enable xhost on login
+
 xhost +local: > /dev/null
 
 alias tags='find . -name "*.go" -o -name "*.c" -o -name "*.h" \
