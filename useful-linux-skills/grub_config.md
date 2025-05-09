@@ -46,3 +46,28 @@ or
 ```sh
 sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 ```
+# Set default kernel
+
+## Ubuntu and Centos
+Edit /etc/default/grub, set
+```sh
+GRUB_DEFAULT='Ubuntu, with Linux 5.10.112-zp-sev-es-siv'
+```
+## Anolis
+* Check default kernel
+```sh
+sudo grubby --default-kernel
+```
+
+* List all kernels
+```sh
+sudo grubby --info=ALL | grep ^kernel
+
+kernel="/boot/vmlinuz-5.10.112-zp-sev-es-siv"
+kernel="/boot/vmlinuz-6.6.88-csv"
+```
+
+* set default kernel
+```sh
+sudo grubby --set-default=/boot/vmlinuz-6.6.88-csv
+```
