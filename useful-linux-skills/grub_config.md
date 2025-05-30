@@ -4,6 +4,16 @@
 GRUB_TIMEOUT=5
 ```
 
+## set earlyprintk
+```sh
+earlyprintk=serial,ttyS0,115200
+```
+
+## set console
+```sh
+console=ttyS0 console=tty1
+```
+
 ## disable submenu option to display all kernels
 ```sh
 GRUB_DISABLE_SUBMENU=y
