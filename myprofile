@@ -12,6 +12,10 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 #PROMPT='[%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[yellow]%}%m %{$fg[green]%}%D{%m/%f} %* %{$fg[cyan]%}%c$(git_prompt_info)%{$reset_color%}]$ '
 # enable xhost on login
 
+# highlight zsh terminal
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+# echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+
 xhost +local: > /dev/null
 
 alias tags='find . -name "*.go" -o -name "*.c" -o -name "*.h" \
