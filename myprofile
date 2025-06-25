@@ -8,7 +8,11 @@ export LC_ALL=en_US.UTF-8
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # ohmyzsh
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# github soruce
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# gitee soruce
+# sh -c "$(curl -fsSL https://gitee.com/Devkings/oh_my_zsh_install/raw/master/install.sh)"
+#
 #PROMPT='[%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[yellow]%}%m %{$fg[green]%}%D{%m/%f} %* %{$fg[cyan]%}%c$(git_prompt_info)%{$reset_color%}]$ '
 # enable xhost on login
 
@@ -51,6 +55,15 @@ fd() {
 fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
+
+#golang mirror used in China
+export GOPROXY=https://goproxy.cn,direct
+
+# pip mirror used in Chine
+# In ~/.pip/pip.conf
+#  [global]
+#  trusted-host =  mirrors.aliyun.com
+#  index-url = http://mirrors.aliyun.com/pypi/simple
 
 PROXY_IP=10.61.40.54
 export http_proxy="http://$PROXY_IP:7890"
