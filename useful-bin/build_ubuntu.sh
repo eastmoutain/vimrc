@@ -13,7 +13,10 @@ scripts/config --file output/.config --disable SYSTEM_REVOCATION_KEYS
 scripts/config  --file output/.config --disable DEBUG_INFO_DWARF5
 scripts/config --file output/.config --enable DEBUG_INFO_NONE
 scripts/config --file output/.config --disable DEBUG_INFO
+scripts/config --file output/.config --disable CONFIG_DEBUG_INFO_BTF
+scripts/config --file output/.config --disable CONFIG_DEBUG_INFO
+scripts/config --file output/.config --disable CONFIG_DEBUG_INFO_DWARF4
 
-yes | make olddefconfig
+make O=output olddefconfig
 
 make -j `getconf _NPROCESSORS_ONLN` bindeb-pkg LOCALVERSION=-custom -f Makefile
