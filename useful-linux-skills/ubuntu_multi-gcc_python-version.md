@@ -15,6 +15,7 @@ sudo update-alternatives --config g++
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 360
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 380
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 390
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 310
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 311
 
 sudo update-alternatives --config python3

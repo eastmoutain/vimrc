@@ -105,7 +105,7 @@ wget https://github.com/Kitware/CMake/releases/download/v3.27.5/cmake-3.27.5-lin
 sudo chmod +x cmake-3.27.5-linux-x86_64.sh
 ./cmake-3.27.5-linux-x86_64.sh --skip-license --prefix=/usr/local
 
-# install python3.10
+# install python3.10 from source
 sudo rm -rf Python-3.10.13.tgz Python-3.10.13
 wget https://www.python.org/ftp/python/3.10.13/Python-3.10.13.tgz
 sudo tar xvf Python-3.10.13.tgz
@@ -114,7 +114,17 @@ cd Python-3.10.13
 sudo make -j64 altinstall
 cd ..
 
+# install python3.10 from mirror
+sudo apt update
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.10 python3.10-venv python3.10-dev
 
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8  2
+sudo update-alternatives --config python3
+# then select the verion you want to set to default
 
 #install vim
 rm -rm -rf vim
