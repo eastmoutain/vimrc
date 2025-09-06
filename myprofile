@@ -71,4 +71,11 @@ export https_proxy="http://$PROXY_IP:7890"
 export ftp_proxy="http://$PROXY_IP:7890"
 export no_proxy="*.hygon.cn, 10.*.*.*, 172.*.*.*"
 
-
+# setup sshfs
+SSHFS_USER="dsh"
+REMOTE_HOST="172.19.21.41"
+LOCAL_DIR=/home/dsh/sshfs_leopard
+REMOTE_DIR=/home/dsh
+mkdir -p $LOCAL_DIR
+alias sshfs_leopard='sshfs -o allow_other,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,uid=$(id -u),gid=$(id -g) \
+	$SSHFS_USER@$REMOTE_HOST:$REMOTE_DIR $LOCAL_DIR'
