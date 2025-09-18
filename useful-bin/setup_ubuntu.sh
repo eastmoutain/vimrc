@@ -124,6 +124,11 @@ sudo apt install python3.10 python3.10-venv python3.10-dev
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8  2
 sudo update-alternatives --config python3
+
+# fix apt_pkg issue
+cd /usr/lib/python3/dist-packages/
+sudo ln -s apt_pkg.cpython-38-x86_64-linux-gnu.so apt_pkg.cpython-310-x86_64-linux-gnu.so
+
 # then select the verion you want to set to default
 
 #install vim
