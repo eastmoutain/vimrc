@@ -56,6 +56,8 @@ fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
 
+export PATH=$PATH:$HOME/.mybin
+
 #golang mirror used in China
 export GOPROXY=https://goproxy.cn,direct
 
