@@ -140,6 +140,9 @@ cd vim
     --enable-cscope \
     --prefix=/usr/local \
     --enable-fail-if-missing
+    --enable-terminal \
+    --disable-gui \
+    --without-x
 make -j64 && sudo make install
 cd ..
 
