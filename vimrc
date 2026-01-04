@@ -110,9 +110,6 @@ Plug 'airblade/vim-gitgutter'
 " llama.vim
 Plug 'ggml-org/llama.vim'
 
-" ollama vim
-Plug 'gergap/vim-ollama'
-
 call plug#end()
 
 
@@ -682,21 +679,7 @@ let g:gitgutter_max_signs = -1   " default value (otherwise)
 " llama-server --host 192.168.1.102 --port 8012 --model model.gguf
 """"""""""""""""""""""""""""""
 
-"let g:llama_config = { 'endpoint' : 'http://192.168.1.102:8012/infill' }
-
-""""""""""""""""""""""""""""""
-" ollama vim
-" Plug 'gergap/vim-ollama'
-" you need install ollama on server by cmd:
-" curl -fsSL https://ollama.com/install.sh | sh
-" then add
-" Environment="OLLAMA_HOST=0.0.0.0"
-" to /etc/systemd/system/ollama.service so that ollama can accept request
-" from other machine.
-"
-" Then install ollama plugin in vim, then config ollama in vim with cmd:
-" Ollama config
-" Type ollama server IP: http://192.168.1.2:11434
+let g:llama_config = { 'endpoint' : 'http://192.168.1.102:8012/infill' }
 
 """"""""""""""""""""""""""""""
 " vim-buffet
