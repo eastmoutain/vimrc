@@ -336,21 +336,21 @@ if has("cscope")
     set cscoperelative " can use realative path
 
     " find this C symbal
-    nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>cs :cs find s <C-R>=expand("<cword>")<CR><CR>
     " find this definition
-    nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>cg :cs find g <C-R>=expand("<cword>")<CR><CR>
     " find functions calling this function
-    nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>cc :cs find c <C-R>=expand("<cword>")<CR><CR>
     " find assignments to
-    nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>ct :cs find t <C-R>=expand("<cword>")<CR><CR>
     " find this egrep pattern
-    nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>ce :cs find e <C-R>=expand("<cword>")<CR><CR>
     " find this file
-    nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <leader>cf :cs find f <C-R>=expand("<cfile>")<CR><CR>
     " find files #including this file
-    nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <leader>ci :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     " find functions called by this function
-    nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>cd :cs find d <C-R>=expand("<cword>")<CR><CR>
 
     set notimeout
     set timeoutlen=4000
@@ -836,7 +836,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 " Do :help cope if you are unsure what cope is. It's super useful!
 "
 " When you search with vimgrep, display your results in cope by doing:
-"   <leader>cc
+"   <leader>sc
 "
 " To go to the next search result do:
 "   <leader>n
@@ -844,8 +844,8 @@ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 " To go to the previous search results do:
 "   <leader>p
 "
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+map <leader>sc :botright cope<cr>
+map <leader>so ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
