@@ -1,0 +1,163 @@
+/*
+ * Typora 大纲和文档自动编号主题
+ * 同时为大纲侧边栏和文档正文添加章节编号
+ */
+
+/**************************************
+ * Header Counters in Outline (Sidebar)
+ **************************************/
+
+/* No link underlines in Outline */
+.outline-content {
+    text-decoration: none;
+}
+
+/* 初始化所有级别的计数器 */
+#outline-content {
+    counter-reset: h1-outline h2-outline h3-outline h4-outline h5-outline h6-outline;
+}
+
+/* 为一级标题设置编号 */
+.outline-h1 {
+    counter-reset: h2-outline;
+}
+
+.outline-h1 > .outline-item > .outline-label::before {
+    counter-increment: h1-outline;
+    content: counter(h1-outline) ". ";
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+/* 为二级标题设置编号 */
+.outline-h2 {
+    counter-reset: h3-outline;
+}
+
+.outline-h2 > .outline-item > .outline-label::before {
+    counter-increment: h2-outline;
+    content: counter(h1-outline) "." counter(h2-outline) ". ";
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+/* 为三级标题设置编号 */
+.outline-h3 {
+    counter-reset: h4-outline;
+}
+
+.outline-h3 > .outline-item > .outline-label::before {
+    counter-increment: h3-outline;
+    content: counter(h1-outline) "." counter(h2-outline) "." counter(h3-outline) ". ";
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+/* 为四级标题设置编号 */
+.outline-h4 {
+    counter-reset: h5-outline;
+}
+
+.outline-h4 > .outline-item > .outline-label::before {
+    counter-increment: h4-outline;
+    content: counter(h1-outline) "." counter(h2-outline) "." counter(h3-outline) "." counter(h4-outline) ". ";
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+/* 为五级标题设置编号 */
+.outline-h5 {
+    counter-reset: h6-outline;
+}
+
+.outline-h5 > .outline-item > .outline-label::before {
+    counter-increment: h5-outline;
+    content: counter(h1-outline) "." counter(h2-outline) "." counter(h3-outline) "." counter(h4-outline) "." counter(h5-outline) ". ";
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+/* 为六级标题设置编号 */
+.outline-h6 > .outline-item > .outline-label::before {
+    counter-increment: h6-outline;
+    content: counter(h1-outline) "." counter(h2-outline) "." counter(h3-outline) "." counter(h4-outline) "." counter(h5-outline) "." counter(h6-outline) ". ";
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+/**************************************
+ * Header Counters in Document Content
+ **************************************/
+
+/* initialize css counter */
+#write {
+    counter-reset: h1-content
+}
+
+h1 {
+    counter-reset: h2-content
+}
+
+h2 {
+    counter-reset: h3-content
+}
+
+h3 {
+    counter-reset: h4-content
+}
+
+h4 {
+    counter-reset: h5-content
+}
+
+h5 {
+    counter-reset: h6-content
+}
+
+/* put counter result into headings */
+#write h1:before {
+    counter-increment: h1-content;
+    content: counter(h1-content) ". "
+}
+
+#write h2:before {
+    counter-increment: h2-content;
+    content: counter(h1-content) "." counter(h2-content) ". "
+}
+
+#write h3:before, h3.md-focus.md-heading:before {
+    counter-increment: h3-content;
+    content: counter(h1-content) "." counter(h2-content) "." counter(h3-content) ". "
+}
+
+#write h4:before, h4.md-focus.md-heading:before {
+    counter-increment: h4-content;
+    content: counter(h1-content) "." counter(h2-content) "." counter(h3-content) "." counter(h4-content) ". "
+}
+
+#write h5:before, h5.md-focus.md-heading:before {
+    counter-increment: h5-content;
+    content: counter(h1-content) "." counter(h2-content) "." counter(h3-content) "." counter(h4-content) "." counter(h5-content) ". "
+}
+
+#write h6:before, h6.md-focus.md-heading:before {
+    counter-increment: h6-content;
+    content: counter(h1-content) "." counter(h2-content) "." counter(h3-content) "." counter(h4-content) "." counter(h5-content) "." counter(h6-content) ". "
+}
+
+/* override the default style for focused headings */
+#write>h3.md-focus:before, #write>h4.md-focus:before, #write>h5.md-focus:before, #write>h6.md-focus:before, h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left: initial;
+    float: none;
+    top: initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
