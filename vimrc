@@ -110,6 +110,9 @@ Plug 'airblade/vim-gitgutter'
 " llama.vim
 Plug 'ggml-org/llama.vim'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+
 call plug#end()
 
 
@@ -939,3 +942,16 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" coc.nvim LSP keybindings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call CocActionAsync('doHover')<CR>
+nnoremap gb <C-o>
+
+" Enable jump stack for coc
+let g:coc_jump_command = 'edit'
