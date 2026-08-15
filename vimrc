@@ -115,6 +115,16 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Disable xterm modifyOtherKeys request (Vim 9.1 default behavior)
+" iTerm2 >=3.5 honors CSI>4;2m, which changes Ctrl-Space (and other
+" ctrl-combos) from legacy single-byte encoding (NUL for <C-@>) to a
+" CSI 27;mod;char~ sequence. This breaks all <C-@>x prefix mappings below
+" and hits a known vim parsing bug (vim/vim#14902) for chained keys.
+" Clearing t_TI/t_TE prevents vim from sending the enable sequence at all.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let &t_TI = ""
+let &t_TE = ""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " = > unset proxy
