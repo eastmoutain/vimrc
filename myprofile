@@ -31,6 +31,11 @@ alias tags='find . -name "*.go" -o -name "*.c" -o -name "*.h" \
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox} --exclude={.cscope.out,.tags}'
 alias findx='find . -name '
 
+export LESSCHARSET=utf-8
+
+eval "$(dircolors -b)"
+export LS_COLORS="$LS_COLORS:di=01;36"   # 目录改成 bold cyan，替代默认的 bold blue
+
 unsetopt share_history
 
 ## dirdiff
