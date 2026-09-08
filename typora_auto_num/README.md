@@ -64,6 +64,25 @@ ln -s $(pwd)/outline-numbering.css ~/Library/Application\ Support/abnerworks.Typ
 }
 ```
 
+## 适配 Night 主题
+
+Night 是 Typora 内置主题，不能像自定义主题一样单独选用，因此需要将编号样式
+直接追加到 Night 主题的 CSS 文件末尾，而不是复制为独立主题。
+
+对应文件：[`night-numbering.css`](./night-numbering.css)
+
+### 安装方法
+
+```bash
+# macOS
+cat night-numbering.css >> "$HOME/Library/Application Support/abnerworks.Typora/themes/night.css"
+
+# Linux
+cat night-numbering.css >> "$HOME/.config/Typora/themes/night.css"
+```
+
+追加完成后重启 Typora 即可，无需在主题菜单中切换（继续使用 Night 主题）。
+
 ## 技术实现
 
 使用 CSS 计数器（CSS Counters）实现：
