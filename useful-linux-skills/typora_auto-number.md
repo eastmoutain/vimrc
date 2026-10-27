@@ -1,10 +1,22 @@
-add the following code to your themes .css file, for example
-Linux : ~/.config/Typora/themes/github.css
+Create a separate theme so automatic numbering can be enabled or disabled from
+Typora's **Themes** menu.
 
-macOS: /Users/dsh/Library/Application Support/abnerworks.Typora/themes/github.css
+- Linux: `~/.config/Typora/themes/outline-numbering.css`
+- macOS: `~/Library/Application Support/abnerworks.Typora/themes/outline-numbering.css`
+
+The current macOS configuration imports Typora's dark `night.css` theme. Do not
+put the heading or outline rules in `user.css`, because that file is loaded for
+every theme and would make numbering impossible to turn off.
+
+After saving the file, restart Typora (or switch away from the theme and back),
+then select **Themes → Outline Numbering**. Select another theme to disable
+automatic numbering.
 
 
 ```sh
+/* Base this selectable theme on Typora's dark Night theme. */
+@import url("./night.css");
+
 /** auto number text */
 /** initialize css counter */
 #write {
